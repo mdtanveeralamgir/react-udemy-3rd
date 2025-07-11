@@ -41,11 +41,17 @@ function App() {
                         <TabButton onClick={() => handleClick('props')}>Props</TabButton>
                         <TabButton onClick={() => handleClick('state')}>State</TabButton>
                     </menu>
-                    {selectedTopic ? <div id='tab-content'>
+                    {/*{selectedTopic ? <div id='tab-content'>*/}
+                    {/*    <h3>{EXAMPLES[selectedTopic].title}</h3>*/}
+                    {/*    <p>{EXAMPLES[selectedTopic].description}</p>*/}
+                    {/*    <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>*/}
+                    {/*</div> : <p>Please select a topic.</p>}*/}
+                    {!selectedTopic && <p>Please select a topic.</p>}
+                    {selectedTopic && <div id='tab-content'>
                         <h3>{EXAMPLES[selectedTopic].title}</h3>
                         <p>{EXAMPLES[selectedTopic].description}</p>
                         <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>
-                    </div> : <p>Please select a topic.</p>}
+                    </div>}
 
                 </section>
             </main>
