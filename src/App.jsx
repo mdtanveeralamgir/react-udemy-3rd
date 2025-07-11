@@ -4,6 +4,12 @@ import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/Example/TabButton";
 
 function App() {
+    //The convension is to start the name of event handler functions with 'handle'
+    //then name of the event
+    function handleClick() {
+        console.log("Hello world");
+    }
+
     return (
         <div>
             <Header />
@@ -23,10 +29,10 @@ function App() {
                 <section id="examples">
                 <h2>Example</h2>
                     <menu>
-                        <TabButton>Components</TabButton>
-                        <TabButton>JSX</TabButton>
-                        <TabButton>Props</TabButton>
-                        <TabButton>State</TabButton>
+                        <TabButton onClick={handleClick}>Components</TabButton>
+                        <TabButton onClick={handleClick}>JSX</TabButton>
+                        <TabButton onClick={handleClick}>Props</TabButton>
+                        <TabButton onClick={handleClick}>State</TabButton>
                     </menu>
                 </section>
             </main>
