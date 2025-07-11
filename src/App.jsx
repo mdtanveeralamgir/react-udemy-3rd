@@ -3,11 +3,13 @@ import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/Example/TabButton";
 import {useState} from "react";
+import {EXAMPLES} from "./data";
 
 function App() {
     //hooks must be called inside component functions
     //cannot be called inside any other statements (if, switch, for)
-    const [selectedTopic, setSelectedTopic] = useState('Please Select a topic');
+    const [selectedTopic, setSelectedTopic] = useState();
+
     //Now need to know which button was clicked by the param
     function handleClick(clickedButton) {
         //Hooks cannot be called inside an inner function
@@ -37,9 +39,14 @@ function App() {
                         <TabButton onClick={() => handleClick('components')}>Components</TabButton>
                         <TabButton onClick={() => handleClick('jsx')}>JSX</TabButton>
                         <TabButton onClick={() => handleClick('props')}>Props</TabButton>
-                        <TabButton onClick={() => handleClick('state ')}>State</TabButton>
+                        <TabButton onClick={() => handleClick('state')}>State</TabButton>
                     </menu>
-                    {selectedTopic}
+                    {selectedTopic ? <div id='tab-content'>
+                        <h3>{EXAMPLES[selectedTopic].title}</h3>
+                        <p>{EXAMPLES[selectedTopic].description}</p>
+                        <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>
+                    </div> : <p>Please select a topic.</p>}
+
                 </section>
             </main>
         </div>
