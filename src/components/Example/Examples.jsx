@@ -37,7 +37,7 @@ export default function Examples() {
                    isSelected={selectedTopic === 'state'}>State</TabButton>
     </>
     return (<Section title="Example" id="examples">
-        <Tabs buttons={tabButtons}>
+        <Tabs buttons={tabButtons} buttonContainer="menu">
             {tabContent}
         </Tabs>
     </Section>);
