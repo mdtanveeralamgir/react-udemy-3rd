@@ -1,6 +1,7 @@
 import TabButton from "./TabButton";
 import {EXAMPLES} from "../../data";
 import {useState} from "react";
+import Section from "../../Section";
 
 export default function Examples() {
     //hooks must be called inside component functions
@@ -13,8 +14,7 @@ export default function Examples() {
         //useState(); //wrong
         setSelectedTopic(clickedButton);
     }
-    return (<section id="examples">
-        <h2>Example</h2>
+    return (<Section title="Example" id="examples">
         <menu>
             <TabButton onClick={() => handleClick('components')}
                        isSelected={selectedTopic === 'components'}>Components</TabButton>
@@ -37,5 +37,5 @@ export default function Examples() {
             <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>
         </div>}
 
-    </section>);
+    </Section>);
 }
