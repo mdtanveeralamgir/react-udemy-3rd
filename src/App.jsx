@@ -1,7 +1,6 @@
 import Player from "./Components/Players/Player.jsx";
 
 function App() {
-
     return <main>
         <div id="game-container">
             <ol id="players">
