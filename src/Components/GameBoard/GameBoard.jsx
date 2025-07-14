@@ -1,12 +1,8 @@
 import {useState} from "react";
 
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-];
+const initialGameBoard = [[null, null, null], [null, null, null], [null, null, null],];
 
-export default function GameBoard() {
+export default function GameBoard({onGameBoardCellClick, activePlayerSymbol}) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     function handleBoardCellClick(rowIndex, colIndex) {
@@ -15,14 +11,15 @@ export default function GameBoard() {
             setGameBoard(prevState => {
                 //updating array in immutable way so the previous array in memory doesnot get updated before.
                 const newGameBoard = [...prevState.map(row => [...row])];
-                newGameBoard[rowIndex][colIndex] = 'X'
+                newGameBoard[rowIndex][colIndex] = activePlayerSymbol;
                 return newGameBoard;
             })
         }
+        onGameBoardCellClick();
     }
 
-    return (
-        <ol id="game-board">
+
+    return (<ol id="game-board">
             {gameBoard.map((row, rowIndex) => (<li key={rowIndex}>
                 <ol>
                     {row.map((playerSymbol, colIndex) => (<li key={colIndex}>
@@ -32,6 +29,5 @@ export default function GameBoard() {
                     </li>))}
                 </ol>
             </li>))}
-        </ol>
-    )
+        </ol>)
 }
