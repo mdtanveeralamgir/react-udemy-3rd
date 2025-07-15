@@ -32,7 +32,7 @@ export default function GameBoard({onGameBoardCellClick, turns}) {
         {gameBoard.map((row, rowIndex) => (<li key={rowIndex}>
             <ol>
                 {row.map((playerSymbol, colIndex) => (<li key={colIndex}>
-                    <button onClick={()=>onGameBoardCellClick(rowIndex, colIndex)}>
+                    <button onClick={()=>onGameBoardCellClick(rowIndex, colIndex)} disabled={playerSymbol !== null}>
                         {playerSymbol}
                     </button>
                 </li>))}
