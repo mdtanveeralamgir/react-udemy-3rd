@@ -11,8 +11,9 @@ function App() {
         setActivePlayer(prevState => prevState === 'X' ? 'O' : 'X');
         setGameTurns(prevState => {
             let currentPlayer = 'X';
-            if (prevState.length > 0 && prevState.player === 'X')
+            if (prevState.length > 0 && prevState[0].player === 'X') {
                 currentPlayer = 'O';
+            }
             return [
                 {square: {row: rowIndex, col: colIndex}, player: currentPlayer}
                 //adding another useState: activePlayer is not a good idea because of
@@ -28,7 +29,7 @@ function App() {
                 <Player initialPlayerName="Player 1" playerSymbol="X" isActive={activePlayer === 'X'}/>
                 <Player initialPlayerName="Player 2" playerSymbol="O" isActive={activePlayer === 'O'}/>
             </ol>
-            <GameBoard onGameBoardCellClick={handleGameBoardCellClick} activePlayerSymbol={activePlayer}/>
+            <GameBoard onGameBoardCellClick={handleGameBoardCellClick} turns={gameTurns}/>
         </div>
         <Log/>
     </main>
