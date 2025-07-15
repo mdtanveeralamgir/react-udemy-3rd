@@ -31,7 +31,7 @@ function App() {
             </ol>
             <GameBoard onGameBoardCellClick={handleGameBoardCellClick} turns={gameTurns}/>
         </div>
-        <Log/>
+        <Log turns={gameTurns}/>
     </main>
 }
 
