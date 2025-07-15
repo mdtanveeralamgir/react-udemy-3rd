@@ -1,12 +1,25 @@
 import Player from "./Components/Players/Player.jsx";
 import GameBoard from "./Components/GameBoard/GameBoard.jsx";
+import Log from "./Components/Logs/Log.jsx";
 import {useState} from "react";
 
 function App() {
     const [activePlayer, setActivePlayer] = useState('X');
+    const [gameTurns, setGameTurns] = useState([]);
 
-    function handleGameBoardCellClick() {
+    function handleGameBoardCellClick(rowIndex, colIndex) {
         setActivePlayer(prevState => prevState === 'X' ? 'O' : 'X');
+        setGameTurns(prevState => {
+            let currentPlayer = 'X';
+            if (prevState.length > 0 && prevState.player === 'X')
+                currentPlayer = 'O';
+            return [
+                {square: {row: rowIndex, col: colIndex}, player: currentPlayer}
+                //adding another useState: activePlayer is not a good idea because of
+                //scheduling the activePlayer might not be the current player
+                // {square: {row: rowIndex, col: colIndex}, player: activePlayer}
+                , ...prevState];
+        });
     }
 
     return <main>
@@ -17,6 +30,7 @@ function App() {
             </ol>
             <GameBoard onGameBoardCellClick={handleGameBoardCellClick} activePlayerSymbol={activePlayer}/>
         </div>
+        <Log/>
     </main>
 }
 
