@@ -37,7 +37,7 @@ function App() {
         const thirdCombination = gameBoard[combination[2].row][combination[2].column];
 
         if (firstCombination && firstCombination === secondCombination && firstCombination === thirdCombination) {
-            winner = firstCombination;
+            winner = playerName[firstCombination];
             break;
         }
     }
@@ -72,7 +72,7 @@ function App() {
         setPlayerName((prevState) => {
             return {
                 ...prevState,
-                [playerSymbol]: playerSymbol,
+                [playerSymbol]: playerName,
             }
         });
     }
@@ -80,10 +80,12 @@ function App() {
     return <main>
         <div id="game-container">
             <ol id="players" className="highlight-player">
-                <Player initialPlayerName="Player 1" playerSymbol="X" isActive={currentPlayer === 'X'}/>
-                <Player initialPlayerName="Player 2" playerSymbol="O" isActive={currentPlayer === 'O'}/>
+                <Player onChangeName={handlePlayerNameChange} initialPlayerName="Player 1" playerSymbol="X"
+                        isActive={currentPlayer === 'X'}/>
+                <Player onChangeName={handlePlayerNameChange} initialPlayerName="Player 2" playerSymbol="O"
+                        isActive={currentPlayer === 'O'}/>
             </ol>
-            {(winner || hasDraw) && <GameOver onClickRematch={handleRematch} winner={winner}/>}
+            {(winner || hasDraw) && <GameOver playerName={playerName} onClickRematch={handleRematch} winner={winner}/>}
             <GameBoard gameBoard={gameBoard} onGameBoardCellClick={handleGameBoardCellClick}/>
         </div>
         <Log turns={gameTurns}/>
