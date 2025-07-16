@@ -16,7 +16,10 @@ function deriveActivePlayer(gameTurns) {
 }
 
 function App() {
-    // const [activePlayer, setActivePlayer] = useState('X');
+    const [playerName, setPlayerName] = useState({
+        X: 'Player 1',
+        O: 'Player 2'
+    });
     const [gameTurns, setGameTurns] = useState([]);
     const currentPlayer = deriveActivePlayer(gameTurns);
 
@@ -56,6 +59,22 @@ function App() {
 
     function handleRematch() {
         setGameTurns([]);
+    }
+
+    /*
+     In order to show player name in game over message we could move the player name state in app component
+     but doing so the whole app component will re-render as user type name of the player
+     since playerName useState is tied with the input.
+     this is not good practice.
+    */
+
+    function handlePlayerNameChange(playerSymbol, playerName) {
+        setPlayerName((prevState) => {
+            return {
+                ...prevState,
+                [playerSymbol]: playerSymbol,
+            }
+        });
     }
 
     return <main>
