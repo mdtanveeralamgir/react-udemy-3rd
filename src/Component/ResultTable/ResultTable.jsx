@@ -1,7 +1,9 @@
 import './ResultTableCss.css';
+import {useState} from "react";
 
-export default function ResultTable({calculated_result}) {
-console.log(calculated_result);
+export default function ResultTable({userInputs}) {
+const [calculatedValue, setCalculatedValue] = useState([]);
+
     return (
         <table id="result">
             <thead>
