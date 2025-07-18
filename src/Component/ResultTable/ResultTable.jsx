@@ -1,8 +1,9 @@
 import './ResultTableCss.css';
 import {useState} from "react";
+import {calculateInvestmentResults} from "../../util/investment.js";
 
 export default function ResultTable({userInputs}) {
-const [calculatedValue, setCalculatedValue] = useState([]);
+    const calculated_result = calculateInvestmentResults(userInputs);
 
     return (
         <table id="result">
