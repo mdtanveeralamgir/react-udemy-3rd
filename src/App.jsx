@@ -1,6 +1,7 @@
 import Header from "./Component/Header/Header.jsx";
 import UserInput from "./Component/UserInput/UserInput.jsx";
 import {useState} from "react";
+import ResultTable from "./Component/ResultTable/ResultTable.jsx";
 
 function App() {
     const [userInputs, setUserInputs] = useState({
@@ -23,6 +24,7 @@ function App() {
         <>
             <Header/>
             <UserInput onChangeInput={handleChange} userInputs={userInputs}/>
+            <ResultTable userInputs={userInputs}/>
         </>
     )
 }
