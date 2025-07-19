@@ -1,5 +1,5 @@
 import logo from '../../assets/logo.png';
-import './Header.css';
+import classes from './Header.Module.css';
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
           textAlign: 'left',
           'text-align': 'left'
       }}>ReactArt</h2>
-      <p>A community of artists and art-lovers.</p>
+      <p className={classes.paragraph}>A community of artists and art-lovers.</p>
     </header>
   );
 }
