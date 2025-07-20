@@ -1,6 +1,9 @@
 import ReactDOM from 'react-dom/client';
+import {StrictMode} from 'react';
 
 import App from './App.jsx';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+//Strict mode executes each component twice to cath the error
+//It does it only in dev mode. not in prod
+ReactDOM.createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>);
