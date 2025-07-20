@@ -7,6 +7,9 @@ export default function Player() {
 
     function handleClick() {
         setEnteredPlayerName(playerName.current.value);
+        //Not a good practice, as ref component is not ment to manipulate dom
+        //But this case it's okay since it's saving a lot of code
+        playerName.current.value = '';
     }
 
     return (
