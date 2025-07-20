@@ -4,20 +4,13 @@ export default function Player() {
     const playerName = useRef('');
     const [enteredPlayerName, setEnteredPlayerName] = useState('');
 
-
-    function handleClick() {
-        setEnteredPlayerName(playerName.current.value);
-        //Not a good practice, as ref component is not ment to manipulate dom
-        //But this case it's okay since it's saving a lot of code
-        playerName.current.value = '';
-    }
-
+    //this will not work as when ref changes the dom doesn't gets re-rendered, like useState
     return (
         <section id="player">
-            <h2>{`Welcome ${enteredPlayerName ? enteredPlayerName : 'unknown entity'}`}</h2>
+            <h2>{`Welcome ${playerName.current ? playerName.current.value : 'unknown entity'}`}</h2>
             <p>
                 <input ref={playerName} type="text"/>
-                <button onClick={handleClick}>Set Name</button>
+                <button>Set Name</button>
             </p>
         </section>
     );
