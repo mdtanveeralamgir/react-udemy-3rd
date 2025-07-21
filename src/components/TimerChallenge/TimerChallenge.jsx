@@ -1,5 +1,10 @@
 import {useState} from "react";
-
+/*
+* using this the stop button with work, but if we start 2 different timeChallenge components
+* then we will not be able to stop any of them. Because the timer variable will be replaced by the pointer of 2nd
+* started component.
+* */
+let timer;
 export default function TimerChallenge({title, targetTime}) {
 
     const [timerStarted, setTimerStarted] = useState(false);
@@ -11,8 +16,8 @@ export default function TimerChallenge({title, targetTime}) {
     * gets recreated and the timer variable that holds the pointer of setTimeout
     * gets re-assigned to a new pointer of a new setTimeout
     * */
-    let timer;
 
+    //let timer;
     function handleStart() {
         timer = setTimerStarted(true);
         setTimeout(() => {
