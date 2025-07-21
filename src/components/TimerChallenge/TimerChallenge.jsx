@@ -1,15 +1,22 @@
-import {useState} from "react";
+import {useState, useRef} from "react";
+
+//let timer;
 /*
 * using this the stop button with work, but if we start 2 different timeChallenge components
 * then we will not be able to stop any of them. Because the timer variable will be replaced by the pointer of 2nd
 * started component.
 * */
-let timer;
+
 export default function TimerChallenge({title, targetTime}) {
 
     const [timerStarted, setTimerStarted] = useState(false);
     const [timerExperied, setTimerExpired] = useState(false);
-
+    /*
+    * now this timer ref will be tied to each component
+    * each instance of this component will have it's own timer variable that points to
+    * it's own setTimeout pointer
+    * */
+    const timer = useRef();
     /*
     * with this solution, the timer cannot be stopped once it's started.
     *  because when we click the stop button the timerChallenge component
@@ -19,15 +26,15 @@ export default function TimerChallenge({title, targetTime}) {
 
     //let timer;
     function handleStart() {
-        timer = setTimerStarted(true);
-        setTimeout(() => {
+        setTimerStarted(true);
+        timer.current = setTimeout(() => {
             setTimerExpired(true);
         }, targetTime * 1000)
     }
 
 
     function handleStop() {
-        clearTimeout(timer);
+        clearTimeout(timer.current);
     }
 
     return (
