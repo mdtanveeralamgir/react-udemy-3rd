@@ -18,7 +18,7 @@ function App() {
         })
     }
 
-    function handleAddProject(projectData){
+    function handleAddProject(projectData) {
         const newProject = {
             ...projectData,
             id: Math.random()
