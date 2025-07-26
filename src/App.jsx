@@ -26,6 +26,7 @@ function App() {
         setProjectState(prevState => {
             return {
                 ...prevState,
+                selectedProjectId: undefined,
                 projects: [...prevState.projects, newProject]
             }
         })
@@ -37,7 +38,7 @@ function App() {
 
     return (
         <main className="h-screen my-8 flex gap-8">
-            <ProjectPanel onStartAddProject={handleStartAddProject}/>
+            <ProjectPanel allProjects={projectState.projects} onStartAddProject={handleStartAddProject}/>
             {content}
         </main>
     );
