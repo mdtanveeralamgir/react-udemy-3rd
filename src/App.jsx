@@ -32,9 +32,18 @@ function App() {
         })
     }
 
+    function handleAddCancelProject(){
+        setProjectState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: undefined,
+            }
+        })
+    }
+
     let content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>;
     if (projectState.selectedProjectId === null)
-        content = <AddProject onAddProjectClick={handleAddProject}/>;
+        content = <AddProject onCancelClick={handleAddCancelProject} onAddProjectClick={handleAddProject}/>;
 
     return (
         <main className="h-screen my-8 flex gap-8">
