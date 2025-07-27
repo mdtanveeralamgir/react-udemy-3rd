@@ -1,6 +1,6 @@
 import Tasks from "../Tasks/Tasks.jsx";
 
-export default function SelectedProject({project, onHandleDelete}) {
+export default function SelectedProject({project, onHandleDelete, onDeleteTask, onAddTask, tasks}) {
 
     const formattedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -16,6 +16,6 @@ export default function SelectedProject({project, onHandleDelete}) {
             <p className="mb-4 text-stone-400">{formattedDate}</p>
             <p className="text-stone-600 whitespace-pre-wrap">{project.description}</p>
         </header>
-        <Tasks/>
+        <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks}/>
     </div>
 }
