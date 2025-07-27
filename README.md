@@ -10,3 +10,5 @@ createPortal
 
 157:
     - Using hook useImperativeHandle to render modal outside of app component
+159:
+    - How to format date
