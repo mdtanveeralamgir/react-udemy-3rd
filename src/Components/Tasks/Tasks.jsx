@@ -1,9 +1,7 @@
 import NewTask from "./NewTask.jsx";
-import {useState} from "react";
 
 
 export default function Tasks({onAdd, onDelete, tasks}) {
-    console.log(tasks);
     return (
         <section>
             <h2 className="text-2xl text-stone-700 font-bold mb-4">Task</h2>
@@ -13,7 +11,8 @@ export default function Tasks({onAdd, onDelete, tasks}) {
                 {tasks.map(task =>
                     <li key={task.id} className="flex justify-between my-4">
                         <span>{task.text}</span>
-                        <span className="text-stone-700 hover:text-red-300">Delete</span>
+                        <span onClick={() => onDelete(task.id)}
+                              className="text-stone-700 hover:text-red-300">Delete</span>
                     </li>)}
             </ul>}
         </section>

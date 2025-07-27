@@ -26,7 +26,13 @@ function App() {
         });
     }
 
-    function handleDeleteTask(task) {
+    function handleDeleteTask(taskID) {
+        setProjectState(prevState => {
+            return {
+                ...prevState,
+                tasks: prevState.tasks.filter(task => task.id !== taskID)
+            }
+        })
     }
 
     function handleSelectProject(projectId) {
@@ -88,8 +94,8 @@ function App() {
         content = <AddProject onCancelClick={handleAddCancelProject} onAddProjectClick={handleAddProject}/>;
     } else {
         const selectedProject = projectState.projects.find(project => project.id === projectState.selectedProjectId);
-        // const tasks = projectState.tasks.filter(task => task.selectedProjectId === selectedProject.id);
-        content = <SelectedProject tasks={projectState.tasks} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask}
+        const tasks = projectState.tasks.filter(task => task.selectedProjectId === selectedProject.id);
+        content = <SelectedProject tasks={tasks} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask}
                                    onHandleDelete={handleDeleteProject} project={selectedProject}/>
     }
 
