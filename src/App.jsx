@@ -19,6 +19,17 @@ function App() {
         })
     }
 
+    function handleDeleteProject() {
+        setProjectState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: undefined,
+                projects: prevState.projects.filter(project => project.id !== prevState.selectedProjectId)
+            }
+            // prevState.projects.map(project => project.selectedProjectId === prevState.selectedProjectId)
+        })
+    }
+
     function handleStartAddProject() {
         setProjectState(prevState => {
             return {
@@ -58,7 +69,7 @@ function App() {
         content = <AddProject onCancelClick={handleAddCancelProject} onAddProjectClick={handleAddProject}/>;
     } else {
         const selectedProject = projectState.projects.find(project => project.id === projectState.selectedProjectId);
-        content = <SelectedProject project={selectedProject}/>
+        content = <SelectedProject onHandleDelete={handleDeleteProject} project={selectedProject}/>
     }
 
     return (
