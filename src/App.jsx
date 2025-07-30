@@ -1,115 +1,79 @@
-import ProjectPanel from "./Components/Projects/ProjectPanel.jsx";
-import AddProject from "./Components/Projects/AddProject.jsx";
-import {useState} from "react";
-import NoProjectSelected from "./Components/Projects/NoProjectSelected.jsx";
-import SelectedProject from "./Components/Projects/SelectedProject.jsx";
+import { useState } from 'react';
+
+import Header from './components/Header.jsx';
+import Shop from './components/Shop.jsx';
+import { DUMMY_PRODUCTS } from './dummy-products.js';
 
 function App() {
-    const [projectState, setProjectState] = useState({
-        selectedProjectId: undefined,
-        projects: [],
-        tasks: []
-    });
+  const [shoppingCart, setShoppingCart] = useState({
+    items: [],
+  });
 
-    function handleAddTask(task) {
+  function handleAddItemToCart(id) {
+    setShoppingCart((prevShoppingCart) => {
+      const updatedItems = [...prevShoppingCart.items];
 
-        setProjectState(prevState => {
-            const newTask = {
-                text: task,
-                selectedProjectId: prevState.selectedProjectId,
-                id: Math.random()
-            }
-            return {
-                ...prevState,
-                tasks: [newTask, ...prevState.tasks]
-            }
+      const existingCartItemIndex = updatedItems.findIndex(
+        (cartItem) => cartItem.id === id
+      );
+      const existingCartItem = updatedItems[existingCartItemIndex];
+
+      if (existingCartItem) {
+        const updatedItem = {
+          ...existingCartItem,
+          quantity: existingCartItem.quantity + 1,
+        };
+        updatedItems[existingCartItemIndex] = updatedItem;
+      } else {
+        const product = DUMMY_PRODUCTS.find((product) => product.id === id);
+        updatedItems.push({
+          id: id,
+          name: product.title,
+          price: product.price,
+          quantity: 1,
         });
-    }
+      }
 
-    function handleDeleteTask(taskID) {
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                tasks: prevState.tasks.filter(task => task.id !== taskID)
-            }
-        })
-    }
+      return {
+        items: updatedItems,
+      };
+    });
+  }
 
-    function handleSelectProject(projectId) {
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                selectedProjectId: projectId
-            }
-        })
-    }
+  function handleUpdateCartItemQuantity(productId, amount) {
+    setShoppingCart((prevShoppingCart) => {
+      const updatedItems = [...prevShoppingCart.items];
+      const updatedItemIndex = updatedItems.findIndex(
+        (item) => item.id === productId
+      );
 
-    function handleDeleteProject() {
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                selectedProjectId: undefined,
-                projects: prevState.projects.filter(project => project.id !== prevState.selectedProjectId)
-            }
-            // prevState.projects.map(project => project.selectedProjectId === prevState.selectedProjectId)
-        })
-    }
+      const updatedItem = {
+        ...updatedItems[updatedItemIndex],
+      };
 
-    function handleStartAddProject() {
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                selectedProjectId: null
-            }
-        })
-    }
+      updatedItem.quantity += amount;
 
-    function handleAddProject(projectData) {
-        const newProject = {
-            ...projectData,
-            id: Math.random()
-        }
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                selectedProjectId: undefined,
-                projects: [...prevState.projects, newProject]
-            }
-        })
-    }
+      if (updatedItem.quantity <= 0) {
+        updatedItems.splice(updatedItemIndex, 1);
+      } else {
+        updatedItems[updatedItemIndex] = updatedItem;
+      }
 
-    function handleAddCancelProject() {
-        setProjectState(prevState => {
-            return {
-                ...prevState,
-                selectedProjectId: undefined,
-            }
-        })
-    }
+      return {
+        items: updatedItems,
+      };
+    });
+  }
 
-    let content;
-    if (projectState.selectedProjectId === undefined)
-        content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>;
-    else if (projectState.selectedProjectId == null) {
-        content = <AddProject onCancelClick={handleAddCancelProject} onAddProjectClick={handleAddProject}/>;
-    } else {
-        const selectedProject = projectState.projects.find(project => project.id === projectState.selectedProjectId);
-        const tasks = projectState.tasks.filter(task => task.selectedProjectId === selectedProject.id);
-        content = <SelectedProject tasks={tasks} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask}
-                                   onHandleDelete={handleDeleteProject} project={selectedProject}/>
-    }
-
-    return (
-        <main className="h-screen my-8 flex gap-8">
-            <ProjectPanel
-                onSelectProject={handleSelectProject}
-                allProjects={projectState.projects}
-                onStartAddProject={handleStartAddProject}
-                selectedProjectId={projectState.selectedProjectId}
-            />
-            {content}
-        </main>
-    );
+  return (
+    <>
+      <Header
+        cart={shoppingCart}
+        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+      />
+      <Shop onAddItemToCart={handleAddItemToCart} />
+    </>
+  );
 }
 
 export default App;
