@@ -1,10 +1,12 @@
 166: Component Composition
     - Wrap a component with another component to avoid props drilling
-168: Create Context
+168: Create Context (set up)
     - A hook to share data across components
     - Set up create context
     - define Shopping cart context and add it in the App.jsx
-169: Create context
+169: Create context (use in comonent to show data)
     - use cart context in cart component to show items in cart
     - use vs useContext hook
     - why need to pass value in the CartContext Component
+170: crete context (structure data to modify context)
+    - pass a function so new item can be added in the cart context
