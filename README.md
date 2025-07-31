@@ -12,3 +12,6 @@
     - pass a function so new item can be added in the cart context
 172: UI updates when context changes
     - Any component that consumes context will be updated if the context changes.
+174: 
+    - Moving all the functions and dependencies in the cart context component to keep app.jsx clean
+    - Using a generic function to wrap the components that will use context to provide all the function used by components
