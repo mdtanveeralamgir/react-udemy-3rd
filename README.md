@@ -1,3 +1,7 @@
+=> Component Composition
+=> Create Context
+=> use Reducer
+
 166: Component Composition
     - Wrap a component with another component to avoid props drilling
 168: Create Context (set up)
@@ -15,3 +19,6 @@
 174: 
     - Moving all the functions and dependencies in the cart context component to keep app.jsx clean
     - Using a generic function to wrap the components that will use context to provide all the function used by components
+175:
+    - Set up reducer
+    - Using dispatch, state
