@@ -19,6 +19,9 @@
 174: 
     - Moving all the functions and dependencies in the cart context component to keep app.jsx clean
     - Using a generic function to wrap the components that will use context to provide all the function used by components
-175:
+175: REDUCER
     - Set up reducer
     - Using dispatch, state
+176:
+    - Add Update cart items using reducer
+    - using dispatcher to pass values in the dispatcher function
