@@ -10,3 +10,5 @@
     - why need to pass value in the CartContext Component
 170: crete context (structure data to modify context)
     - pass a function so new item can be added in the cart context
+172: UI updates when context changes
+    - Any component that consumes context will be updated if the context changes.
