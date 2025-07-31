@@ -2,7 +2,7 @@ import {useContext} from "react";
 // import {use} from "react"; //Flexible
 import {CartContext} from "../store/shopping-cart-context.jsx";
 
-export default function Cart({onUpdateItemQuantity}) {
+export default function Cart() {
     //Though using hook inside conditional statement is not allowed
     //but below is okay and will work
     // if(true){
@@ -10,7 +10,7 @@ export default function Cart({onUpdateItemQuantity}) {
     //     const cartCtx = useContext(CartContext); // not Okay
     // }
 
-    const {items} = useContext(CartContext);
+    const {items, updateItemQuantity} = useContext(CartContext);
     const totalPrice = items.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
@@ -32,11 +32,11 @@ export default function Cart({onUpdateItemQuantity}) {
                                     <span> ({formattedPrice})</span>
                                 </div>
                                 <div className="cart-item-actions">
-                                    <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                                    <button onClick={() => updateItemQuantity(item.id, -1)}>
                                         -
                                     </button>
                                     <span>{item.quantity}</span>
-                                    <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                                    <button onClick={() => updateItemQuantity(item.id, 1)}>
                                         +
                                     </button>
                                 </div>
