@@ -4,6 +4,6 @@
 
 178:
     - How to get user's current location
-180: 
+179: 
     - side effect of using useState wrongfully.
     - causing infinite loop
