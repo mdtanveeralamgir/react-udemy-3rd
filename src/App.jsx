@@ -11,9 +11,14 @@ function App() {
     const modal = useRef();
     const selectedPlace = useRef();
     const [pickedPlaces, setPickedPlaces] = useState([]);
+    const [availablePlaces, setAvailablePlaces] = useState([]);
 
     navigator.geolocation.getCurrentPosition((position) => {
         const sortedPlaces = sortPlacesByDistance(AVAILABLE_PLACES, position.coords.latitude, position.coords.longitude);
+        //This will case infinite look
+        //when App renders location will be set and setPickedPlaces will be called
+        //And App will rerender. again setPickedPlaces will be called
+        // setPickedPlaces(sortedPlaces);
     })
 
     function handleStartRemovePlace(id) {
