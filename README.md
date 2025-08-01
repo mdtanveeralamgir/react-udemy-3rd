@@ -12,3 +12,5 @@
     - how to use useEffect that runs only once when page loads
 181: 
     - side effect not require useEffect
+182:
+    - Why not to use use effect to retrieve data from localStorage

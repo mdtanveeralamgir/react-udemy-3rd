@@ -7,18 +7,23 @@ import DeleteConfirmation from './components/DeleteConfirmation.jsx';
 import logoImg from './assets/logo.png';
 import {sortPlacesByDistance} from "./loc.js";
 
+function pickedPlacesArr() {
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
+    return AVAILABLE_PLACES.filter((place) =>
+        storedIds.includes(place.id)
+    );
+}
+
 function App() {
     const modal = useRef();
     const selectedPlace = useRef();
-    const [pickedPlaces, setPickedPlaces] = useState([]);
+    const [pickedPlaces, setPickedPlaces] = useState(pickedPlacesArr());
     const [availablePlaces, setAvailablePlaces] = useState([]);
-
     //useEffect will be executed after the component function is done executing
     //If there is no dependencies are provided the it will execute only once
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             const sortedPlaces = sortPlacesByDistance(AVAILABLE_PLACES, position.coords.latitude, position.coords.longitude);
-            console.log(sortedPlaces);
             setAvailablePlaces(sortedPlaces);
         });
     }, []);
@@ -55,6 +60,9 @@ function App() {
             prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
         );
         modal.current.close();
+        let storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
+        storedIds = storedIds.filter((id) => id !== selectedPlace.current);
+        localStorage.setItem('selectedPlaces', JSON.stringify(storedIds));
     }
 
     return (
