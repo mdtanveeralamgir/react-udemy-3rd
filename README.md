@@ -7,3 +7,6 @@
 179: 
     - side effect of using useState wrongfully.
     - causing infinite loop
+180: useEffect
+    - How to use useEffect
+    - how to use useEffect that runs only once when page loads
