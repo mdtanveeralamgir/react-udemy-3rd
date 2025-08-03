@@ -26,5 +26,7 @@
 187:
     - setTimer to trigger an event
     - but the setTimer is not stop when the event is cancelled manually
+188:
+    - using useEffect to cleanup setTimeout event
     
 
