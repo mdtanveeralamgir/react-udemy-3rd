@@ -11,7 +11,6 @@ const Modal = function Modal({children, open}) {
             dialog.current.close();
     }, [open]);
 
-    // console.log(open)
     return createPortal(
         <dialog className="modal" ref={dialog}>
             {open ? children : null}
