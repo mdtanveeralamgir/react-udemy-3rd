@@ -15,10 +15,10 @@ function pickedPlacesArr() {
 }
 
 function App() {
-    const modal = useRef();
     const selectedPlace = useRef();
     const [pickedPlaces, setPickedPlaces] = useState(pickedPlacesArr());
     const [availablePlaces, setAvailablePlaces] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     //useEffect will be executed after the component function is done executing
     //If there is no dependencies are provided the it will execute only once
     useEffect(() => {
@@ -28,14 +28,13 @@ function App() {
         });
     }, []);
 
-
     function handleStartRemovePlace(id) {
-        modal.current.open();
+        setIsModalOpen(true);
         selectedPlace.current = id;
     }
 
     function handleStopRemovePlace() {
-        modal.current.close();
+        setIsModalOpen(false);
     }
 
     function handleSelectPlace(id) {
@@ -59,7 +58,7 @@ function App() {
         setPickedPlaces((prevPickedPlaces) =>
             prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
         );
-        modal.current.close();
+        setIsModalOpen(false);
         let storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
         storedIds = storedIds.filter((id) => id !== selectedPlace.current);
         localStorage.setItem('selectedPlaces', JSON.stringify(storedIds));
@@ -67,7 +66,7 @@ function App() {
 
     return (
         <>
-            <Modal ref={modal}>
+            <Modal open={isModalOpen}>
                 <DeleteConfirmation
                     onCancel={handleStopRemovePlace}
                     onConfirm={handleRemovePlace}
