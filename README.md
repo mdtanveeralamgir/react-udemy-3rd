@@ -1,6 +1,7 @@
 => sideEffects
 => useEffects
 => browser's navigator to get user's current location
+=> useCallBack hook
 
 178:
     - How to get user's current location
@@ -32,4 +33,11 @@
     - declaring dependencies of useEffect which is a function
     - why it can cause an infinite loop
     - why in this case it will not cause an infinite loop
+190: useCallBack hook
+    - creating a function if the dependencies change
+    - create only once if there is no dependencies declared
+    - use it to prevent a function from recreating hence
+      preventing infinite loop while using that function
+      in useEffect and passing as dependency
+
 
