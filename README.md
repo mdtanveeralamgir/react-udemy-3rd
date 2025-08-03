@@ -39,5 +39,8 @@
     - use it to prevent a function from recreating hence
       preventing infinite loop while using that function
       in useEffect and passing as dependency
+191:
+    - using setInterval without useEffect which causes infinite loop
+
 
 
