@@ -3,9 +3,14 @@ import {useEffect, useState} from "react";
 const TIMER = 3000;
 export default function DeleteConfirmation({onConfirm, onCancel}) {
     const [remainingTimer, setRemainingTimer] = useState(TIMER);
-    setInterval(() => {
-        setRemainingTimer(prev => prev - 10);
-    }, 10);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log('interval')
+            setRemainingTimer(prev => prev - 10);
+        }, 10);
+        return () => clearInterval(interval);
+    }, []);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
