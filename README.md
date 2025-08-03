@@ -17,4 +17,10 @@
 183:
     - replace ref and useimperativehandle with state to open modal
     - without backdrop
+184:
+    - Using useEffect to make sure the DOM element is available that is grabbed by ref
+    - before we could use any prop (useState) on that element
+185:
+    - declaring useEffect dependencies
+    - what are dependencies and what are not
 
