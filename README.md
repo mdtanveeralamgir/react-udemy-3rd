@@ -23,4 +23,8 @@
 185:
     - declaring useEffect dependencies
     - what are dependencies and what are not
+187:
+    - setTimer to trigger an event
+    - but the setTimer is not stop when the event is cancelled manually
+    
 
