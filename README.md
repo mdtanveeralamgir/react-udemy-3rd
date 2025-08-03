@@ -28,5 +28,8 @@
     - but the setTimer is not stop when the event is cancelled manually
 188:
     - using useEffect to cleanup setTimeout event
-    
+189:
+    - declaring dependencies of useEffect which is a function
+    - why it can cause an infinite loop
+    - why in this case it will not cause an infinite loop
 
