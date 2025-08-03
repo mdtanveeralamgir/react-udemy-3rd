@@ -41,6 +41,7 @@
       in useEffect and passing as dependency
 191:
     - using setInterval without useEffect which causes infinite loop
-
+    - using useEffect to setInterval and avoid infinite loop
+    - also using cleanup to stop setInterval and avoid infinite loop
 
 
