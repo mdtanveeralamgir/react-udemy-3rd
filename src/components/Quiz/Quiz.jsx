@@ -27,7 +27,8 @@ export default function Quiz() {
 
     return <div id="quiz">
         <div id="question">
-            <QuestionTimer timeout={10000} onTimeout={handleTimeOut}/>
+            {/*The key will change on every render resulting the QuestionTimer unMount and reMount on every change*/}
+            <QuestionTimer key={aciveQuestionIndex} timeout={10000} onTimeout={handleTimeOut}/>
             <h2>{QUESTIONS[aciveQuestionIndex].text}</h2>
             <ul id="answers">
                 {suffeledAnswers.map((answer) => <li key={answer} className="answer">
