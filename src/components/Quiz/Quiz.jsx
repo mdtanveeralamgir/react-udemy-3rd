@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import QUESTIONS from '../../questions.js';
 import quizComplete from '../../assets/quiz-complete.png'
+import QuestionTimer from "../QuestionTimer/QuestionTimer.jsx";
 
 export default function Quiz() {
     const [userAnswer, setUserAnswer] = useState([])
@@ -10,6 +11,10 @@ export default function Quiz() {
 
     function handleSelectAnswer(answer) {
         setUserAnswer(prev => [...prev, answer])
+    }
+
+    function handleTimeOut() {
+        handleSelectAnswer(undefined);
     }
 
     if (isQuizFinished) {
@@ -24,6 +29,7 @@ export default function Quiz() {
 
     return <div id="quiz">
         <div id="question">
+            <QuestionTimer timeout={10000} onTimeout={handleTimeOut}/>
             <h2>{QUESTIONS[aciveQuestionIndex].text}</h2>
             <ul id="answers">
                 {suffeledAnswers.map((answer) => <li key={answer} className="answer">
