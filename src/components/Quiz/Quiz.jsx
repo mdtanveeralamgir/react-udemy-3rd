@@ -1,9 +1,10 @@
-import {useState, useCallback} from 'react'
+import {useState, useCallback, useRef} from 'react'
 import QUESTIONS from '../../questions.js';
 import quizComplete from '../../assets/quiz-complete.png'
-import QuestionTimer from "../QuestionTimer/QuestionTimer.jsx";
+import Question from '../Question/Question.jsx'
 
 export default function Quiz() {
+
     const [userAnswer, setUserAnswer] = useState([])
     const [answerState, setAnswerState] = useState('')
     const aciveQuestionIndex = answerState === '' ? userAnswer.length : userAnswer.length - 1;
@@ -24,7 +25,7 @@ export default function Quiz() {
             setTimeout(() => {
                 setAnswerState('');
             }, 2000);
-        }, 10000);
+        }, 1000);
 
     }, [aciveQuestionIndex])
 
@@ -37,32 +38,15 @@ export default function Quiz() {
         </div>
     }
 
-    const suffeledAnswers = [...QUESTIONS[aciveQuestionIndex].answers];
-    suffeledAnswers.sort(() => Math.random() - 0.5);
-
     return <div id="quiz">
-        <div id="question">
-            {/*The key will change on every render resulting the QuestionTimer unMount and reMount on every change*/}
-            <QuestionTimer key={aciveQuestionIndex} timeout={10000} onTimeout={handleTimeOut}/>
-            <h2>{QUESTIONS[aciveQuestionIndex].text}</h2>
-            <ul id="answers">
-                {suffeledAnswers.map((answer) => {
-                    // debugger
-                    const isSelected = answer === userAnswer[userAnswer.length - 1];
-                    let cssClass = '';
-                    // debugger
-                    if(answerState === 'answered' && isSelected){
-                        cssClass = 'selected';
-                    }
-                    if((answerState === 'correct' || answerState === 'wrong') && isSelected){
-                        cssClass = answerState;
-                    }
-                    cssClass = answerState === 'answered' ? 'answered' : '';
-                    return <li key={answer} className="answer">
-                        <button className={cssClass} onClick={() => handleSelectAnswer(answer)}>{answer}</button>
-                    </li>
-                })}
-            </ul>
-        </div>
+        <Question
+            key={aciveQuestionIndex}
+            onTimeout={handleTimeOut}
+            questionTxt={QUESTIONS[aciveQuestionIndex].text}
+            answers={QUESTIONS[aciveQuestionIndex].answers}
+            onSelectAnswer={handleSelectAnswer}
+            selectedAnswer={userAnswer[userAnswer.length - 1]}
+            answerState={answerState}
+        />
     </div>
 }
