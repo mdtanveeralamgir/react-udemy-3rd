@@ -12,3 +12,5 @@
     - clean up setTimeout, setInterval
     - Using key that changes on every render resulting the QuestionTimer unMount and reMount on every change
     - resulting the progress bar to reset.
+
+This project is mostly about using setTimeout.
