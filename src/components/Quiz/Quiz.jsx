@@ -1,7 +1,7 @@
 import {useState, useCallback, useRef} from 'react'
 import QUESTIONS from '../../questions.js';
-import quizComplete from '../../assets/quiz-complete.png'
 import Question from '../Question/Question.jsx'
+import Summary from "../Summary/Summary.jsx";
 
 export default function Quiz() {
 
@@ -21,10 +21,7 @@ export default function Quiz() {
     const handleTimeOut = useCallback(() => handleSelectAnswer(null), [handleSelectAnswer])
 
     if (isQuizFinished) {
-        return <div id="summary">
-            <img src={quizComplete} alt="Quiz Complete"/>
-            <h2>Quiz Completed</h2>
-        </div>
+        return <Summary userAnswers={userAnswer}/>
     }
 
     return <div id="quiz">
