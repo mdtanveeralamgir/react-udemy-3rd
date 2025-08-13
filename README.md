@@ -1,6 +1,7 @@
 => memo (to prevent unnecessary component render)
 => useCallback
 => useMemo hook
+=> details of key
 
 208*: (memo)
     - How to use memo
@@ -13,3 +14,7 @@
     - How to use useMemo
     - When to use useMemo
     - Why not overuse it
+213*: key
+    - why key is important
+    - why key is important in dynamicly created/added (using map) component
+    - why using index as key is not a good idea
