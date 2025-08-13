@@ -18,3 +18,5 @@
     - why key is important
     - why key is important in dynamicly created/added (using map) component
     - why using index as key is not a good idea
+214*:
+    - More on why using index as key is bad idea
