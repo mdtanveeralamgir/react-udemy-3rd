@@ -19,7 +19,8 @@ function App() {
             <Header/>
             <main>
                 <ConfigureCounter onSetCount={handleSetCount}/>
-                <Counter initialCount={chosenCount}/>
+                //using this approach react will only execute component again if the key changes
+                <Counter key={chosenCount} initialCount={chosenCount}/>
             </main>
         </>
     );

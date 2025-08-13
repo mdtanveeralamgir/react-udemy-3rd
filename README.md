@@ -20,3 +20,5 @@
     - why using index as key is not a good idea
 214*:
     - More on why using index as key is bad idea
+215*:
+    - Using key over useEffect to re-render a component
