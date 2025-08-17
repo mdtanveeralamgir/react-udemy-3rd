@@ -8,3 +8,6 @@
 247*:
     - How to build custom hook
     - How to use it in a component
+248*:
+    - Return a function pointer from custom hook
+    - use that function in the calling component

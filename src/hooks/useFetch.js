@@ -28,5 +28,6 @@ export function useFetch(fetchFN, initialValue){
         isFetching,
         error,
         fetchedData,
+        setFetchedData
     }
 }
