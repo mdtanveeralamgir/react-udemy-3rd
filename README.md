@@ -11,3 +11,5 @@
 248*:
     - Return a function pointer from custom hook
     - use that function in the calling component
+249*:
+    - use custom fetchData hook in another component
