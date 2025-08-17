@@ -1,4 +1,5 @@
 => Custom hooks
+=> return promise from a function
 
 245: 
     - Why need custom hook
@@ -13,3 +14,6 @@
     - use that function in the calling component
 249*:
     - use custom fetchData hook in another component
+250*:
+    - Doing sorting after fetching data
+    - creating a function to modify fetch data and passing it to custom hook
