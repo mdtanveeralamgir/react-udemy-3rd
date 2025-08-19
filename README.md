@@ -6,3 +6,6 @@
     - Different ways to preventDefault
 255:
     - limitations of useRef
+256:
+    - How to get all inputs using formData
+    - using different functions of formData to get un-collected data
