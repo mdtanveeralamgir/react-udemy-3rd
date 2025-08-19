@@ -3,10 +3,14 @@ import {useRef} from "react";
 export default function Login() {
     const email = useRef();
     const password = useRef();
+
     function handleSubmit(event) {
         event.preventDefault();
         console.log(email.current.value)
         console.log(password.current.value)
+
+        //Reset using event
+        // event.target.reset();
     }
 
     return (

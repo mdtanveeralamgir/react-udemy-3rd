@@ -14,6 +14,9 @@ export default function Signup() {
         const data = Object.fromEntries(fd.entries());
         data.aquisitions = aquisitionChannels;
         console.log(data);
+
+        //reset entire form
+        // event.target.reset();
     }
 
     return (
@@ -103,6 +106,7 @@ export default function Signup() {
             </div>
 
             <p className="form-actions">
+                {/*When the type is reset it will reset the entire form*/}
                 <button type="reset" className="button button-flat">
                     Reset
                 </button>
