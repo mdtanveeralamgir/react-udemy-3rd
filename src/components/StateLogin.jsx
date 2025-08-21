@@ -9,6 +9,8 @@ export default function Login() {
         password: ''
     });
 
+    const emailIsInvalid = enteredInput.email !== '' && !enteredInput.email.includes('@');
+
     function handleSubmit(event) {
         event.preventDefault();
         console.log(enteredInput.email)
@@ -35,6 +37,7 @@ export default function Login() {
                     <label htmlFor="email">Email</label>
                     <input id="email" type="email" onChange={(event) => handleInputChange('email', event)}
                            value={enteredInput.email} name="email"/>
+                    <div className='control-error'>{emailIsInvalid && <p>Please enter a valid email address.</p>}</div>
                 </div>
 
                 <div className="control no-margin">
