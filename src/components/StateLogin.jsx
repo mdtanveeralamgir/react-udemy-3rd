@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Input from "./Input";
 
 export default function Login() {
     // const [enteredEmail, setEnteredEmail] = useState('');
@@ -42,14 +43,24 @@ export default function Login() {
             <h2>Login</h2>
 
             <div className="control-row">
-                <div className="control no-margin">
-                    <label htmlFor="email">Email</label>
-                    <input id="email" type="email" onChange={(event) => handleInputChange('email', event)}
-                           value={enteredInput.email} name="email"
-                           onBlur={() => handleInputBlur('email')}
-                    />
-                    <div className='control-error'>{emailIsInvalid && <p>Please enter a valid email address.</p>}</div>
-                </div>
+                <Input id='email'
+                       label='Email'
+                       type='email'
+                       name='email'
+                       onChange={(event) => handleInputChange('email', event)}
+                       value={enteredInput.email}
+                       onBlur={() => handleInputBlur('email')}
+                       error={emailIsInvalid ? 'Please enter a valid email address.' : ''}
+                />
+                {/*<div className="control no-margin">*/}
+                {/*    <label htmlFor="email">Email</label>*/}
+                {/*    <input id="email" type="email"*/}
+                {/*           onChange={(event) => handleInputChange('email', event)}*/}
+                {/*           value={enteredInput.email} name="email"*/}
+                {/*           onBlur={() => handleInputBlur('email')}*/}
+                {/*    />*/}
+                {/*    <div className='control-error'>{emailIsInvalid && <p>Please enter a valid email address.</p>}</div>*/}
+                {/*</div>*/}
 
                 <div className="control no-margin">
                     <label htmlFor="password">Password</label>
