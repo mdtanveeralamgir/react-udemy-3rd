@@ -1,4 +1,7 @@
+import {useState} from "react";
+
 export default function Signup() {
+    const [passwordsMatch, setPasswordsMatch] = useState(false);
     function handleSubmit(event) {
         event.preventDefault()
 
@@ -13,6 +16,11 @@ export default function Signup() {
         //get all the input values together
         const data = Object.fromEntries(fd.entries());
         data.aquisitions = aquisitionChannels;
+        if(data.password !== data.confirmPassword){
+            setPasswordsMatch(false);
+            return;
+        }
+        setPasswordsMatch(true);
         console.log(data);
 
         //reset entire form
@@ -41,8 +49,9 @@ export default function Signup() {
                         id="confirm-password"
                         type="password"
                         name="confirm-password"
-                        requireds
+                        required
                     />
+                    <div className="control-error">{!passwordsMatch && <p>Passwords don't match</p>}</div>
                 </div>
             </div>
 
