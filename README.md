@@ -1,6 +1,7 @@
 => forms submit
 => different way to preventDefault
 => useRef
+=> onBlur (HTML input event)
 
 253:
     - Different ways to preventDefault
@@ -9,3 +10,5 @@
 256:
     - How to get all inputs using formData
     - using different functions of formData to get un-collected data
+258: (onBlur)
+    - user input onBlur
