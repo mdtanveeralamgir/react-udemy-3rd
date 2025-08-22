@@ -1,46 +1,58 @@
-import {useState} from "react";
+import {isEmail, isNotEmpty, hasMinLength, isEqualToOtherValue} from "../util/validation.js";
 
 export default function Signup() {
-    const [passwordsMatch, setPasswordsMatch] = useState(false);
-    function handleSubmit(event) {
-        event.preventDefault()
+    function signupAction(formData) {
+        const email = formData.get('email');
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirm-password');
+        const firstName = formData.get('first-name');
+        const lastName = formData.get('last-name');
+        const role = formData.get('role');
+        const terms = formData.get('terms');
+        const acquisitionChannel = formData.getAll('acquisition');
 
-        const fd = new FormData(event.target);
+        let error = [];
 
-        //get individual value of input
-        // const emailVal = fd.get('email');
-
-        //if multiple inputs have same name then Object.fromEntries(fd.entries()); this
-        //cannot retrieve those inputs
-        const aquisitionChannels = fd.getAll('acquisition');
-        //get all the input values together
-        const data = Object.fromEntries(fd.entries());
-        data.aquisitions = aquisitionChannels;
-        if(data.password !== data.confirmPassword){
-            setPasswordsMatch(false);
-            return;
+        if (!isEmail(email)) {
+            error.push('Email is not valid');
         }
-        setPasswordsMatch(true);
-        console.log(data);
-
-        //reset entire form
-        // event.target.reset();
+        if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
+            error.push('Please enter a valid password');
+        }
+        if (!isEqualToOtherValue(password, confirmPassword)) {
+            error.push('Passwords do not match');
+        }
+        if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
+            error.push('Please enter your first and last name');
+        }
+        if (!isNotEmpty(role)) {
+            error.push('Please select your role');
+        }
+        if (!terms) {
+            error.push('Please accept the terms and conditions');
+        }
+        if (acquisitionChannel.length === 0) {
+            error.push('Please select how you found us');
+        }
+        if (error.length > 0) {
+        }
     }
 
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form action={signupAction}>
             <h2>Welcome on board!</h2>
             <p>We just need a little bit of data from you to get you started 🚀</p>
 
             <div className="control">
                 <label htmlFor="email">Email</label>
-                <input id="email" type="email" name="email" required/>
+                <input id="email" type="email" name="email"/>
             </div>
 
             <div className="control-row">
                 <div className="control">
                     <label htmlFor="password">Password</label>
-                    <input id="password" type="password" name="password" required minLength="8"/>
+                    <input id="password" type="password" name="password"/>
                 </div>
 
                 <div className="control">
@@ -49,9 +61,7 @@ export default function Signup() {
                         id="confirm-password"
                         type="password"
                         name="confirm-password"
-                        required
                     />
-                    <div className="control-error">{!passwordsMatch && <p>Passwords don't match</p>}</div>
                 </div>
             </div>
 
@@ -60,18 +70,18 @@ export default function Signup() {
             <div className="control-row">
                 <div className="control">
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first-name" required/>
+                    <input type="text" id="first-name" name="first-name"/>
                 </div>
 
                 <div className="control">
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name" required/>
+                    <input type="text" id="last-name" name="last-name"/>
                 </div>
             </div>
 
             <div className="control">
                 <label htmlFor="phone">What best describes your role?</label>
-                <select id="role" name="role" required>
+                <select id="role" name="role">
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
                     <option value="employee">Employee</option>
@@ -110,19 +120,16 @@ export default function Signup() {
 
             <div className="control">
                 <label htmlFor="terms-and-conditions">
-                    <input type="checkbox" id="terms-and-conditions" name="terms" required/>I
+                    <input type="checkbox" id="terms-and-conditions" name="terms"/>I
                     agree to the terms and conditions
                 </label>
             </div>
 
             <p className="form-actions">
-                {/*When the type is reset it will reset the entire form*/}
                 <button type="reset" className="button button-flat">
                     Reset
                 </button>
-                <button type="submit" className="button">
-                    Sign up
-                </button>
+                <button className="button">Sign up</button>
             </p>
         </form>
     );
