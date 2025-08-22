@@ -1,7 +1,8 @@
 import {isEmail, isNotEmpty, hasMinLength, isEqualToOtherValue} from "../util/validation.js";
+import {useActionState} from "react";
 
 export default function Signup() {
-    function signupAction(formData) {
+    function signupAction(prevFormState, formData) {
         const email = formData.get('email');
         const password = formData.get('password');
         const confirmPassword = formData.get('confirm-password');
@@ -11,36 +12,43 @@ export default function Signup() {
         const terms = formData.get('terms');
         const acquisitionChannel = formData.getAll('acquisition');
 
-        let error = [];
+        let errors = [];
 
         if (!isEmail(email)) {
-            error.push('Email is not valid');
+            errors.push('Email is not valid');
         }
         if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
-            error.push('Please enter a valid password');
+            errors.push('Please enter a valid password');
         }
         if (!isEqualToOtherValue(password, confirmPassword)) {
-            error.push('Passwords do not match');
+            errors.push('Passwords do not match');
         }
         if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
-            error.push('Please enter your first and last name');
+            errors.push('Please enter your first and last name');
         }
         if (!isNotEmpty(role)) {
-            error.push('Please select your role');
+            errors.push('Please select your role');
         }
         if (!terms) {
-            error.push('Please accept the terms and conditions');
+            errors.push('Please accept the terms and conditions');
         }
         if (acquisitionChannel.length === 0) {
-            error.push('Please select how you found us');
+            errors.push('Please select how you found us');
         }
-        if (error.length > 0) {
+        if (errors.length > 0) {
+            return {errors}
         }
+
+        return {errors: null}
     }
 
+    //formState: form's current state. initially {errors: null}
+    //formAction: special react's wrapper function for  signupAction function, which should be passed to action of the form
+    //pending: is the form currently being submitted or not.
 
+    const [formState, formAction, pending] = useActionState(signupAction, {errors: null});
     return (
-        <form action={signupAction}>
+        <form action={formAction}>
             <h2>Welcome on board!</h2>
             <p>We just need a little bit of data from you to get you started 🚀</p>
 
@@ -124,7 +132,9 @@ export default function Signup() {
                     agree to the terms and conditions
                 </label>
             </div>
-
+            {formState.errors && <ul className="error">
+                {formState.errors.map(error => <li key={error}>{error}</li>)}
+            </ul>}
             <p className="form-actions">
                 <button type="reset" className="button button-flat">
                     Reset
