@@ -8,4 +8,5 @@
     - validate form data
 270*: useActionState
     - use of useActionState to display error messages
-    - 
+271*:
+    - Keep default values of inputs after form submission
