@@ -1,15 +1,19 @@
 // import {useActionState} from "react";
 // import {useFormStatus} from "react-dom";
 
+import {use} from 'react';
+import {OpinionsContext} from "../store/opinions-context.jsx";
+
 export function Opinion({opinion: {id, title, body, userName, votes}}) {
     // const {updateVoteState, upVoteAction} = useFormStatus(upVoteAction, false);
+    const {upvoteOpinion, downvoteOpinion} = use(OpinionsContext);
 
-    function upVoteAction() {
-        console.log("upVoteAction");
+    async function upVoteAction() {
+        await upvoteOpinion(id);
     }
 
-    function downVoteAction() {
-        console.log("downVoteAction");
+    async function downVoteAction() {
+        await downvoteOpinion(id);
     }
 
     return (
