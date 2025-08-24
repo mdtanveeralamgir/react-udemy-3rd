@@ -15,3 +15,7 @@
   - async form submission 
 276*: useFormStatus
   - useFormStatus can only be used in a nested component
+277*:
+  - Submit and call different function for different button pressed
+  - upVote for up function
+  - downVote for down function
