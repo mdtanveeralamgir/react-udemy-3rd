@@ -1,6 +1,7 @@
 => using form 'action' (react 19) to submit form 
 => useActionState hook
 => useFormStatus hook
+=> useOptimistic hook
 
 268: 
     - form action
@@ -19,3 +20,7 @@
   - Submit and call different function for different button pressed
   - upVote for up function
   - downVote for down function
+280*: useOptimistic
+  - should be called inside a form
+  - change the value in display before updating backend
+  - rolls back if the backend failed to update
