@@ -1,37 +1,38 @@
-import {useActionState} from "react";
+import {useActionState, useState} from 'react';
 
-export function NewOpinion() {
-    const [formState, formAction] = useActionState(shareOpinionAction, {errors: null})
-    function shareOpinionAction(prevData, formData) {
-        const userName = formData.get('userName');
-        const title = formData.get('title');
-        const body = formData.get('body');
+function handleFormAction(prevData, formData) {
+    const userName = formData.get('userName');
+    const title = formData.get('title');
+    const body = formData.get('body');
 
-        let errors = [];
+    let errors = [];
 
-        if (!userName.trim()) {
-            errors.push('Provide a username');
-        }
-        if (title.trim().length < 5) {
-            errors.push('Must be at least 5 characters.');
-        }
-        if (body.trim().length < 5 || title.trim().length > 300) {
-            errors.push('Body should be between 5 to 300 characters.');
-        }
+    if (userName.trim() === '') {
+        errors.push('Username is required');
+    }
+    if (title.trim() === '') {
+        errors.push('Title is required');
+    }
+    if (body.trim() === '') {
+        errors.push('Body is required');
+    }
 
-        if (errors.length > 0) {
-            return {
-                errors,
-                enteredValue: {
-                    userName,
-                    title,
-                    body
-                }
+    if (errors.length > 0) {
+        return {
+            errors,
+            enteredValue: {
+                userName,
+                title,
+                body
             }
         }
-
-        return {errors: null}
     }
+
+    return {errors: null}
+}
+
+export function NewOpinion() {
+    const [formState, formAction] = useActionState(handleFormAction, {errors: null})
     return (
         <div id="new-opinion">
             <h2>Share your opinion!</h2>
