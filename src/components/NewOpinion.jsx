@@ -1,8 +1,11 @@
-import {useActionState} from "react";
+import {useActionState, use} from "react";
+import {OpinionsContext} from "../store/opinions-context.jsx";
 
 export function NewOpinion() {
     const [formState, formAction] = useActionState(shareOpinionAction, {errors: null})
-    function shareOpinionAction(prevData, formData) {
+    const {addOpinion} = use(OpinionsContext);
+
+    async function shareOpinionAction(prevData, formData) {
         const userName = formData.get('userName');
         const title = formData.get('title');
         const body = formData.get('body');
@@ -30,8 +33,10 @@ export function NewOpinion() {
             }
         }
 
+        await addOpinion({title, body, userName});
         return {errors: null}
     }
+
     return (
         <div id="new-opinion">
             <h2>Share your opinion!</h2>
