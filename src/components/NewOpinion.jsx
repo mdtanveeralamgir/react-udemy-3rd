@@ -2,7 +2,7 @@ import {useActionState, use} from "react";
 import {OpinionsContext} from "../store/opinions-context.jsx";
 
 export function NewOpinion() {
-    const [formState, formAction] = useActionState(shareOpinionAction, {errors: null})
+    const [formState, formAction, pending] = useActionState(shareOpinionAction, {errors: null})
     const {addOpinion} = use(OpinionsContext);
 
     async function shareOpinionAction(prevData, formData) {
@@ -63,7 +63,7 @@ export function NewOpinion() {
                     </ul>
                 }
                 <p className="actions">
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={pending}>Submit</button>
                 </p>
             </form>
         </div>
