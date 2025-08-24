@@ -1,5 +1,6 @@
 import {useActionState, use} from "react";
 import {OpinionsContext} from "../store/opinions-context.jsx";
+import Submit from "./Submit.jsx";
 
 export function NewOpinion() {
     const [formState, formAction, pending] = useActionState(shareOpinionAction, {errors: null})
@@ -62,9 +63,7 @@ export function NewOpinion() {
                         {formState.errors.map(error => (<li key={error}>{error}</li>))}
                     </ul>
                 }
-                <p className="actions">
-                    <button type="submit" disabled={pending}>Submit</button>
-                </p>
+                <Submit/>
             </form>
         </div>
     );
