@@ -1,11 +1,21 @@
+import Meals from "./Component/Meals/Meals.jsx";
+import Cart from "./Component/Cart/Cart.jsx";
+import {CartContext} from "./store/CartContext.js";
+import {useState} from "react";
+
 function App() {
-  return (
-    <>
-      <h1>You got this 💪</h1>
-      <p>Stuck? Not sure how to proceed?</p>
-      <p>Don't worry - we've all been there. Let's build it together!</p>
-    </>
-  );
+    const [cartItem, setCartItem] = useState([]);
+    
+    const cartCtxVal = {
+        items: cartItem,
+        addToCart: setCartItem
+    }
+    return (
+        <CartContext value={cartCtxVal}>
+            <Cart/>
+            <Meals/>
+        </CartContext>
+    );
 }
 
 export default App;
