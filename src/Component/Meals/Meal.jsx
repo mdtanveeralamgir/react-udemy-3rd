@@ -1,11 +1,11 @@
 import {useContext} from "react";
-import {CartContext} from "../../store/CartContext.js";
+import CartContext from "../../store/CartContext.jsx";
 
 export default function Meal({id, name, price, description, image}) {
     const cartCtx = useContext(CartContext);
 
     function handleOnClick() {
-        cartCtx.addToCart((prev) => [...prev, id])
+        cartCtx.addToCart(id);
     }
 
     return (

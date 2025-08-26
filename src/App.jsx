@@ -1,20 +1,13 @@
 import Meals from "./Component/Meals/Meals.jsx";
 import Cart from "./Component/Cart/Cart.jsx";
-import {CartContext} from "./store/CartContext.js";
-import {useState} from "react";
+import {CartContextProvider} from "./store/CartContext.jsx";
 
 function App() {
-    const [cartItem, setCartItem] = useState([]);
-    
-    const cartCtxVal = {
-        items: cartItem,
-        addToCart: setCartItem
-    }
     return (
-        <CartContext value={cartCtxVal}>
+        <CartContextProvider>
             <Cart/>
             <Meals/>
-        </CartContext>
+        </CartContextProvider>
     );
 }
 

@@ -16,9 +16,23 @@ function cartReducer(state, action) {
     return state
 }
 
-export function cartContextProvider({children}) {
+export function CartContextProvider({children}) {
+    const [cart, dispatchCartAction] = useReducer(cartReducer, {items: []});
 
-    return <CartContext>
+    const addItem = (id) => {
+        dispatchCartAction({
+            type: 'ADD_ITEM',
+            payload: id
+        })
+    }
+
+    const cartCtx = {
+        items: cart.items,
+        addToCart: addItem
+    }
+
+
+    return <CartContext value={cartCtx}>
         {children}
     </CartContext>
 }
