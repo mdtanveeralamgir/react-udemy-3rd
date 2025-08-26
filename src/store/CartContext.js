@@ -1,6 +1,26 @@
-import {createContext} from "react";
+import {createContext, useReducer} from "react";
 
-export const CartContext = createContext({
+
+const CartContext = createContext({
     items: [],
-    addToCart: () => {}
-})
+    addToCart: () => {
+    }
+});
+
+function cartReducer(state, action) {
+    if (action.type === 'ADD_ITEM') {
+        const updatedItems = [...state.items];
+        updatedItems.push(action.payload);
+        return {...state, items: updatedItems};
+    }
+    return state
+}
+
+export function cartContextProvider({children}) {
+
+    return <CartContext>
+        {children}
+    </CartContext>
+}
+
+export default CartContext;
