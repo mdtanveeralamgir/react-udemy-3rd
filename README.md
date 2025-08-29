@@ -1,6 +1,5 @@
-=> useContext
-=> useReducer
+=> redux (3rd party lib alternative of useContext)
+=>
 
-288*:
-    - using useContext
-    - using useReducer
+304*:
+    - Life cycle of redux
