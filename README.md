@@ -8,3 +8,5 @@
     - setup redux for counter
 307*:
     - set up dispatcher/action.type
+310*:
+    - Provide store to whole app wide
