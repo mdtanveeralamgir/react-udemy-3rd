@@ -6,3 +6,5 @@
 306*:
     - setup a simple redux
     - setup redux for counter
+307*:
+    - set up dispatcher/action.type
