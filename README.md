@@ -1,5 +1,5 @@
 => redux (3rd party lib alternative of useContext)
-=>
+=> useSelector
 
 304*:
     - Life cycle of redux
@@ -10,3 +10,6 @@
     - set up dispatcher/action.type
 310*:
     - Provide store to whole app wide
+311*:
+    - useSelector
+    - using part of store in a component
