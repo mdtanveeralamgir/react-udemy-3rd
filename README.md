@@ -1,5 +1,6 @@
 => redux (3rd party lib alternative of useContext)
 => useSelector
+=> useDispatch
 
 304*:
     - Life cycle of redux
@@ -13,3 +14,6 @@
 311*:
     - useSelector
     - using part of store in a component
+312*:
+    - useDispatch
+    - increment/decrement counter values
