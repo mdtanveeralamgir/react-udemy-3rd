@@ -17,3 +17,6 @@
 312*:
     - useDispatch
     - increment/decrement counter values
+316*:
+    - never modify the current state
+    - always override existing state by returning a new state
