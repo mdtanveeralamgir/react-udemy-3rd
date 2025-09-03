@@ -11,6 +11,11 @@ const reducer = (state = {counter: 0}, action) => {
             counter: state.counter - 1
         }
     }
+    if (action.type === 'custom') {
+        return {
+            counter: state.counter + action.payload
+        }
+    }
 
     return state;
 }
