@@ -5,8 +5,8 @@ import {counterAction} from '../store';
 const Counter = () => {
     //useSelector creates a subscription from this component to the store
     //if the component unmounts the subscription also unmounts
-    const counter = useSelector(state => state.counter);
-    const show = useSelector(state => state.showCounter);
+    const counter = useSelector(state => state.counter.counter);
+    const show = useSelector(state => state.counter.showCounter);
     const dispatch = useDispatch();
 
     function incrementHandler() {

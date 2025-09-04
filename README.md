@@ -29,3 +29,7 @@
     - using configureStore to connect reducer to the store
 320*:
     - using new counterSlice in the dispatcher
+321*:
+    - adding another reducer and add it to the store
+322*:
+    - using 2nd reducer to sign in and signout
