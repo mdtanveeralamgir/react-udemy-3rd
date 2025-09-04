@@ -33,3 +33,5 @@
     - adding another reducer and add it to the store
 322*:
     - using 2nd reducer to sign in and signout
+323*:
+    - split different slices in different files
