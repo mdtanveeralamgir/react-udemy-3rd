@@ -1,6 +1,7 @@
 => redux (3rd party lib alternative of useContext)
 => useSelector
 => useDispatch
+=> redux toolkit
 
 304*:
     - Life cycle of redux
@@ -20,3 +21,6 @@
 316*:
     - never modify the current state
     - always override existing state by returning a new state
+318*: toolkit, createSlice
+    - simplify reducer
+    - how to use createSlice
