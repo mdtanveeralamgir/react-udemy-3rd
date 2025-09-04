@@ -27,3 +27,5 @@
     - how to use createSlice
 319*: configureStore
     - using configureStore to connect reducer to the store
+320*:
+    - using new counterSlice in the dispatcher
