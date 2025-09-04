@@ -2,6 +2,7 @@
 => useSelector
 => useDispatch
 => redux toolkit
+=> configureStore
 
 304*:
     - Life cycle of redux
@@ -24,3 +25,5 @@
 318*: toolkit, createSlice
     - simplify reducer
     - how to use createSlice
+319*: configureStore
+    - using configureStore to connect reducer to the store
