@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {items: [], showCart: false}
+const initialState = {items: [], showCart: false, Notification: null}
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -35,8 +35,12 @@ const cartSlice = createSlice({
         toggleCart(state) {
             state.showCart = !state.showCart;
         },
-        clearCart(state) {
-            state.items = [];
+        showNotification(state, action) {
+            state.Notification = {
+                status: action.payload.status,
+                title: action.payload.title,
+                message: action.payload.message
+            };
         }
     }
 });
