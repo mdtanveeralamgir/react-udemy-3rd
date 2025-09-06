@@ -3,3 +3,5 @@
 
 330*:
     - how NOT to use async function in reducer
+332*:
+    - where to put logic, reducer/component
