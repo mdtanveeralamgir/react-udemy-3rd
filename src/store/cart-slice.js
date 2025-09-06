@@ -6,6 +6,9 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        //calling fetch / async function inside reducer is not allowed
+        //fetch() //not allowed
+        //async function something() //not allowed
         addItem(state, action) {
             const existingItem = state.items.findIndex(cartItem => cartItem.id === action.payload);
             if (existingItem > -1) {
