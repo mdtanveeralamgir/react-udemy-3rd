@@ -29,8 +29,10 @@ const cartSlice = createSlice({
         showCart(state) {
             state.showCart = true;
         },
-        hideCart(state) {
+        replaceCart(state, action) {
             state.showCart = false;
+            state.items = action.payload;
+            state.Notification = null;
         },
         toggleCart(state) {
             state.showCart = !state.showCart;
@@ -45,40 +47,7 @@ const cartSlice = createSlice({
     }
 });
 
-export function sendCartData(cartData) {
-    return async (dispatch) => {
-        dispatch(cartAction.showNotification({status: 'pending', title: 'Updating', message: 'Sending data.'}));
 
-        async function sendRequest() {
-            const response = await fetch('https://react-56141-default-rtdb.firebaseio.com/cart.json', {
-                method: 'PUT',
-                body: JSON.stringify(cartData)
-            });
-
-            if (!response.ok) {
-                throw new Error('Something went wrong!');
-            }
-        }
-
-        try {
-            await sendRequest();
-            dispatch(cartAction.showNotification({
-                status: 'success',
-                title: 'Done',
-                message: 'Data has been updated.'
-            }));
-        } catch (error) {
-            dispatch(cartAction.showNotification({
-                status: 'error',
-                title: 'Error!',
-                message: error.message
-            }));
-        }
-
-
-    }
-
-}
 
 
 export const cartAction = cartSlice.actions;

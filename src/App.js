@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {sendCartData} from "./store/cart-slice";
+import {sendCartData, fetchCartData} from "./store/cart-actions";
 import Notification from "./components/Notification/Notification";
 
 let initialRender = true;
@@ -13,6 +13,12 @@ function App() {
     const cartItem = useSelector(state => state.items);
     const dispatch = useDispatch();
     const isNotification = useSelector(state => state.Notification);
+
+    useEffect(() => {
+
+        dispatch(fetchCartData());
+
+    }, []);
 
     useEffect(() => {
 
