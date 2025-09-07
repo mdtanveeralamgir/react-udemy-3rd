@@ -15,13 +15,14 @@ function App() {
     const isNotification = useSelector(state => state.Notification);
 
     useEffect(() => {
+
         const sendData = async () => {
             dispatch(cartAction.showNotification({status: 'pending', title: 'Updating', message: 'Sending data.'}));
-            const response = fetch('https://react-56141-default-rtdb.firebaseio.com/cart.json', {
+            const response = await fetch('https://react-56141-default-rtdb.firebaseio.com/cart.json', {
                 method: 'PUT',
                 body: JSON.stringify(cartItem)
             });
-            console.log(response);
+
             if (!response.ok) {
                 throw new Error('Something went wrong!');
             }
