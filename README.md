@@ -9,3 +9,5 @@
     - where to put logic, reducer/component
 333*:
     - saving/updating cart items in firebase
+336*: thunk
+    - creating custom dispatcher using thunk
