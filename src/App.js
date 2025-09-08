@@ -11,11 +11,11 @@ let initialRender = true;
 function App() {
     const isCartShown = useSelector(state => state.showCart);
     const cartItem = useSelector(state => state.items);
+    const isCartItemChanged = useSelector(state => state.isChanged);
     const dispatch = useDispatch();
     const isNotification = useSelector(state => state.Notification);
 
     useEffect(() => {
-
         dispatch(fetchCartData());
 
     }, []);
@@ -26,7 +26,8 @@ function App() {
             initialRender = false;
             return;
         }
-        dispatch(sendCartData(cartItem));
+        if (isCartItemChanged)
+            dispatch(sendCartData(cartItem));
 
     }, [cartItem, dispatch]);
     return (

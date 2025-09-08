@@ -13,8 +13,7 @@ export function fetchCartData() {
 
         try {
             const cartData = await fetchCartItems();
-            console.log(cartData);
-            dispatch(cartAction.replaceCart(cartData));
+            dispatch(cartAction.replaceCart(cartData || []));
         } catch (error) {
             dispatch(cartAction.showNotification({
                 status: 'error',
