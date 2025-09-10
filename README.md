@@ -11,3 +11,5 @@
     - hence only necessary components will re-render
 348*:
     - Nested route based on link (navbar)
+349*:
+    - adding error page (page not found)
