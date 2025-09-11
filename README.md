@@ -24,3 +24,7 @@
 352*: useParams
     - dynamic path
     - passing param to components
+353*:
+    - Relative vs Absolute path for navigation
+    - back button to navigate previous page
+    - relative path vs relative route
