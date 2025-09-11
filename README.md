@@ -5,6 +5,7 @@
 => nested route
 => NavLink
 => useNavigate
+=> useParams
 
 344*:
     - how to set up router
@@ -20,3 +21,6 @@
     - Navlink has built in isActive feature to identify active links
 351*: useNavigate
     - navigate to a page programatically
+352*: useParams
+    - dynamic path
+    - passing param to components
