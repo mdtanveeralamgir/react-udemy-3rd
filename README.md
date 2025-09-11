@@ -3,6 +3,7 @@
 => RouterProvider
 => Link
 => nested route
+=> NavLink
 
 344*:
     - how to set up router
@@ -13,3 +14,6 @@
     - Nested route based on link (navbar)
 349*:
     - adding error page (page not found)
+350*:
+    - Using NavLink instead of Link
+    - Navlink has built in isActive feature to identify active links
