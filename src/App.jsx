@@ -1,59 +1,65 @@
-import {CORE_CONCEPTS} from "./data";
-import Header from "./components/Header/Header";
-import CoreConcept from "./components/CoreConcept/CoreConcept";
-import TabButton from "./components/Example/TabButton";
+import Player from "./Components/Players/Player.jsx";
+import GameBoard from "./Components/GameBoard/GameBoard.jsx";
+import Log from "./Components/Logs/Log.jsx";
 import {useState} from "react";
-import {EXAMPLES} from "./data";
+import GameOver from "./Components/GameOver/GameOver.jsx";
+import {deriveActivePlayer, deriveWinner, deriveGameBoard} from "./Functions/App.js";
+import {INITIAL_GAME_BOARD, PLAYERS} from "./Variables/App.js";
 
 function App() {
-    //hooks must be called inside component functions
-    //cannot be called inside any other statements (if, switch, for)
-    const [selectedTopic, setSelectedTopic] = useState();
+    const [playerName, setPlayerName] = useState(PLAYERS);
+    const [gameTurns, setGameTurns] = useState([]);
+    const currentPlayer = deriveActivePlayer(gameTurns);
+    const hasDraw = gameTurns.length === 9 && !winner;
+    const gameBoard = deriveGameBoard(INITIAL_GAME_BOARD, gameTurns);
 
-    //Now need to know which button was clicked by the param
-    function handleClick(clickedButton) {
-        //Hooks cannot be called inside an inner function
-        //useState(); //wrong
-        setSelectedTopic(clickedButton);
+    function handleGameBoardCellClick(rowIndex, colIndex) {
+        // setActivePlayer(prevState => prevState === 'X' ? 'O' : 'X');
+        setGameTurns(prevState => {
+            const currentPlayer = deriveActivePlayer(prevState);
+            return [
+                {square: {row: rowIndex, col: colIndex}, player: currentPlayer}
+                //adding another useState: activePlayer is not a good idea because of
+                //scheduling the activePlayer might not be the current player
+                // {square: {row: rowIndex, col: colIndex}, player: activePlayer}
+                , ...prevState];
+        });
     }
 
-    return (
-        <div>
-            <Header/>
-            <main>
-                <section id="core-concepts">
-                    <ul>
-                        {CORE_CONCEPTS.map((eachConcept) => <CoreConcept key={eachConcept.title} {...eachConcept}/>)}
-                    </ul>
-                </section>
-                <section id="examples">
-                    <h2>Example</h2>
-                    <menu>
-                        <TabButton onClick={() => handleClick('components')}
-                                   isSelected={selectedTopic === 'components'}>Components</TabButton>
-                        <TabButton onClick={() => handleClick('jsx')}
-                                   isSelected={selectedTopic === 'jsx'}>JSX</TabButton>
-                        <TabButton onClick={() => handleClick('props')}
-                                   isSelected={selectedTopic === 'props'}>Props</TabButton>
-                        <TabButton onClick={() => handleClick('state')}
-                                   isSelected={selectedTopic === 'state'}>State</TabButton>
-                    </menu>
-                    {/*{selectedTopic ? <div id='tab-content'>*/}
-                    {/*    <h3>{EXAMPLES[selectedTopic].title}</h3>*/}
-                    {/*    <p>{EXAMPLES[selectedTopic].description}</p>*/}
-                    {/*    <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>*/}
-                    {/*</div> : <p>Please select a topic.</p>}*/}
-                    {!selectedTopic && <p>Please select a topic.</p>}
-                    {selectedTopic && <div id='tab-content'>
-                        <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre><code>{EXAMPLES[selectedTopic].code}</code></pre>
-                    </div>}
+    function handleRematch() {
+        setGameTurns([]);
+    }
 
-                </section>
-            </main>
+    /*
+     In order to show player name in game over message we could move the player name state in app component
+     but doing so the whole app component will re-render as user type name of the player
+     since playerName useState is tied with the input.
+     this is not good practice.
+    */
+
+    function handlePlayerNameChange(playerSymbol, playerName) {
+        setPlayerName((prevState) => {
+            return {
+                ...prevState,
+                [playerSymbol]: playerName,
+            }
+        });
+    }
+
+    const winner = deriveWinner(gameBoard, playerName);
+    return <main>
+        <div id="game-container">
+            <ol id="players" className="highlight-player">
+                <Player onChangeName={handlePlayerNameChange} initialPlayerName="Player 1" playerSymbol={PLAYERS.X}
+                        isActive={currentPlayer === 'X'}/>
+                <Player onChangeName={handlePlayerNameChange} initialPlayerName="Player 2" playerSymbol={PLAYERS.O}
+                        isActive={currentPlayer === 'O'}/>
+            </ol>
+            {(winner || hasDraw) && <GameOver playerName={playerName} onClickRematch={handleRematch} winner={winner}/>}
+            <GameBoard gameBoard={gameBoard} onGameBoardCellClick={handleGameBoardCellClick}/>
         </div>
-    );
+        <Log turns={gameTurns}/>
+    </main>
 }
 
-export default App;
+export default App
