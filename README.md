@@ -4,6 +4,7 @@
 => Link
 => nested route
 => NavLink
+=> useNavigate
 
 344*:
     - how to set up router
@@ -17,3 +18,5 @@
 350*:
     - Using NavLink instead of Link
     - Navlink has built in isActive feature to identify active links
+351*: useNavigate
+    - navigate to a page programatically
