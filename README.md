@@ -1,19 +1,26 @@
-=> Custom hooks
-=> return promise from a function
+=> using form 'action' (react 19) to submit form 
+=> useActionState hook
+=> useFormStatus hook
+=> useOptimistic hook
 
-245: 
-    - Why need custom hook
-    - reuse code hooks since hooks can be used in custom hook
-246:
-    - custom hook naming rules
-247*:
-    - How to build custom hook
-    - How to use it in a component
-248*:
-    - Return a function pointer from custom hook
-    - use that function in the calling component
-249*:
-    - use custom fetchData hook in another component
-250*:
-    - Doing sorting after fetching data
-    - creating a function to modify fetch data and passing it to custom hook
+268: 
+    - form action
+269 : 
+    - get all form data 
+    - validate form data 
+270: useActionState 
+    - use of useActionState to display error messages 
+271*: 
+- Keep default values of inputs after form submission
+275*: 
+  - async form submission 
+276*: useFormStatus
+  - useFormStatus can only be used in a nested component
+277*:
+  - Submit and call different function for different button pressed
+  - upVote for up function
+  - downVote for down function
+280*: useOptimistic
+  - should be called inside a form
+  - change the value in display before updating backend
+  - rolls back if the backend failed to update
