@@ -1,24 +1,7 @@
-=> memo (to prevent unnecessary component render)
-=> useCallback
-=> useMemo hook
-=> details of key
+=> useEffect to fetch data
+=> display fallback text while loading data using useState
 
-208*: (memo)
-    - How to use memo
-    - Why not to use memo all the time
-    - what memo does.
-210*: useCallBack + memo
-    - how can memo not work if a function is passed as prop
-    - how to use useCallback + memo to prevent unnecessary re-render
-211*: useMemo
-    - How to use useMemo
-    - When to use useMemo
-    - Why not overuse it
-213*: key
-    - why key is important
-    - why key is important in dynamicly created/added (using map) component
-    - why using index as key is not a good idea
-214*:
-    - More on why using index as key is bad idea
-215*:
-    - Using key over useEffect to re-render a component
+232: 
+    - using useEffect to fetch data
+235:
+    - fallBack text while loading data
