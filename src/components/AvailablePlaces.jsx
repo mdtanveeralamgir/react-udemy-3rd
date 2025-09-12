@@ -1,51 +1,41 @@
-import {useState, useEffect} from 'react';
 import Places from './Places.jsx';
-import ErrorPage from './Error.jsx';
+import Error from './Error.jsx';
+import {fetchAvailablePlaces} from '../http.js';
+import {useFetch} from "../hooks/useFetch.js";
 import {sortPlacesByDistance} from "../loc.js";
 
+async function fetchSortedPlaces() {
+    const places = await fetchAvailablePlaces();
+
+    return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const sortedPlaces = sortPlacesByDistance(
+                places,
+                position.coords.latitude,
+                position.coords.longitude
+            );
+            resolve(sortedPlaces);
+        });
+    })
+}
+
 export default function AvailablePlaces({onSelectPlace}) {
-    const [availablePlaces, setAvailablePlaces] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
+    const {isFetching, error, fetchedData: availablePlaces}
+        = useFetch(fetchSortedPlaces, [])
 
-        async function fetchPlaces() {
-
-            try {
-                setIsLoading(true);
-                const response = await fetch('http://localhost:3000/places');
-                const resData = await response.json();
-
-                if (!response.ok)
-                    throw new Error('Failed to fetch places');
-                if (!response.ok)
-                    throw new Error('Failed to fetch places');
-
-                navigator.geolocation.getCurrentPosition((position) => {
-                    const sortedPlaces = sortPlacesByDistance(resData.places, position.coords.latitude, position.coords.longitude);
-                    setAvailablePlaces(sortedPlaces);
-                    setIsLoading(false);
-                })
-
-            } catch (error) {
-                setError(error);
-                setIsLoading(false);
-            }
-        }
-
-        fetchPlaces();
-    }, []);
 
     if (error) {
-        return <ErrorPage title="An Error occured" message={error.message}/>
+        return <Error title="An error occurred!" message={error.message}/>;
     }
+
     return (
         <Places
-            isLoading={isLoading}
-            loadingText="Loading available places..."
             title="Available Places"
             places={availablePlaces}
+            isLoading={isFetching}
+            loadingText="Fetching place data..."
+            fallbackText="No places available."
             onSelectPlace={onSelectPlace}
         />
     );
