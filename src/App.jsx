@@ -1,20 +1,14 @@
-import { Header } from './components/Header';
-import { Opinions } from './components/Opinions';
-import { NewOpinion } from './components/NewOpinion';
-import { OpinionsContextProvider } from './store/opinions-context';
+import Meals from "./Component/Meals/Meals.jsx";
+import Cart from "./Component/Cart/Cart.jsx";
+import {CartContextProvider} from "./store/CartContext.jsx";
 
 function App() {
-  return (
-    <>
-      <Header />
-      <main>
-        <OpinionsContextProvider>
-          <NewOpinion />
-          <Opinions />
-        </OpinionsContextProvider>
-      </main>
-    </>
-  );
+    return (
+        <CartContextProvider>
+            <Cart/>
+            <Meals/>
+        </CartContextProvider>
+    );
 }
 
 export default App;
