@@ -1,13 +1,30 @@
-=> redux with async function
-=> redux toolkit with async function
-=> firebase
-=> Thunk
+=> Router
+=> createBrowserRouter
+=> RouterProvider
+=> Link
+=> nested route
+=> NavLink
+=> useNavigate
+=> useParams
 
-330*:
-    - how NOT to use async function in reducer
-332*:
-    - where to put logic, reducer/component
-333*:
-    - saving/updating cart items in firebase
-336*: thunk
-    - creating custom dispatcher using thunk
+344*:
+    - how to set up router
+347*:
+    - Using Link instead of anchor tag prevents full page refresh
+    - hence only necessary components will re-render
+348*:
+    - Nested route based on link (navbar)
+349*:
+    - adding error page (page not found)
+350*:
+    - Using NavLink instead of Link
+    - Navlink has built in isActive feature to identify active links
+351*: useNavigate
+    - navigate to a page programatically
+352*: useParams
+    - dynamic path
+    - passing param to components
+353*:
+    - Relative vs Absolute path for navigation
+    - back button to navigate previous page
+    - relative path vs relative route
