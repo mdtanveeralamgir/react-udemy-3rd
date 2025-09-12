@@ -1,31 +1,16 @@
-import { useState } from 'react';
-
-import Header from './components/Header.jsx';
-import UserInput from './components/UserInput.jsx';
-import Results from './components/Results.jsx';
+import Player from './components/Player/Player.jsx';
+import TimerChallenge from "./components/TimerChallenge/TimerChallenge.jsx";
 
 function App() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleChange(inputIdentifier, newValue) {
-    setUserInput((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [inputIdentifier]: newValue,
-      };
-    });
-  }
-
   return (
     <>
-      <Header />
-      <UserInput userInput={userInput} onChange={handleChange} />
-      <Results input={userInput} />
+      <Player />
+      <div id="challenges">
+          <TimerChallenge title="Easy" targetTime={1}></TimerChallenge>
+          <TimerChallenge title="Not Easy" targetTime={2}></TimerChallenge>
+          <TimerChallenge title="Getting Harder" targetTime={10}></TimerChallenge>
+          <TimerChallenge title="Pros Only" targetTime={15}></TimerChallenge>
+      </div>
     </>
   );
 }
