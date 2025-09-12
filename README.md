@@ -1,27 +1,47 @@
-=> Component Composition
-=> Create Context
-=> use Reducer
+=> sideEffects
+=> useEffects
+=> browser's navigator to get user's current location
+=> useCallBack hook
 
-166: Component Composition
-    - Wrap a component with another component to avoid props drilling
-168: Create Context (set up)
-    - A hook to share data across components
-    - Set up create context
-    - define Shopping cart context and add it in the App.jsx
-169: Create context (use in comonent to show data)
-    - use cart context in cart component to show items in cart
-    - use vs useContext hook
-    - why need to pass value in the CartContext Component
-170: crete context (structure data to modify context)
-    - pass a function so new item can be added in the cart context
-172: UI updates when context changes
-    - Any component that consumes context will be updated if the context changes.
-174: 
-    - Moving all the functions and dependencies in the cart context component to keep app.jsx clean
-    - Using a generic function to wrap the components that will use context to provide all the function used by components
-175: REDUCER
-    - Set up reducer
-    - Using dispatch, state
-176:
-    - Add Update cart items using reducer
-    - using dispatcher to pass values in the dispatcher function
+178:
+    - How to get user's current location
+179: 
+    - side effect of using useState wrongfully.
+    - causing infinite loop
+180: useEffect
+    - How to use useEffect
+    - how to use useEffect that runs only once when page loads
+181: 
+    - side effect not require useEffect
+182:
+    - Why not to use use effect to retrieve data from localStorage
+183:
+    - replace ref and useimperativehandle with state to open modal
+    - without backdrop
+184:
+    - Using useEffect to make sure the DOM element is available that is grabbed by ref
+    - before we could use any prop (useState) on that element
+185:
+    - declaring useEffect dependencies
+    - what are dependencies and what are not
+187:
+    - setTimer to trigger an event
+    - but the setTimer is not stop when the event is cancelled manually
+188:
+    - using useEffect to cleanup setTimeout event
+189:
+    - declaring dependencies of useEffect which is a function
+    - why it can cause an infinite loop
+    - why in this case it will not cause an infinite loop
+190: useCallBack hook
+    - creating a function if the dependencies change
+    - create only once if there is no dependencies declared
+    - use it to prevent a function from recreating hence
+      preventing infinite loop while using that function
+      in useEffect and passing as dependency
+191:
+    - using setInterval without useEffect which causes infinite loop
+    - using useEffect to setInterval and avoid infinite loop
+    - also using cleanup to stop setInterval and avoid infinite loop
+
+
