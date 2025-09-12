@@ -1,13 +1,13 @@
-import Question from "./components/Questions/Questions.jsx";
-
-import QuestionContextProvider from "./components/store/QuestionContext.jsx";
-import ProgressBar from "./components/progressBar/ProgressBar.jsx";
+import Header from "./components/Header/Header.jsx";
+import Quiz from "./components/Quiz/Quiz.jsx";
 
 function App() {
-    return <QuestionContextProvider>
-        {/*<ProgressBar/>*/}
-        <Question/>
-    </QuestionContextProvider>
+    return (
+        <>
+            <Header/>
+            <Quiz/>
+        </>
+    )
 }
 
 export default App;
