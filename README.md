@@ -33,3 +33,8 @@
     - nested routing
 359*
     - using loader to fetch data before rendering page
+    - when catching the loader always returns data not promise
+360*:
+    - the useLoaderData will be available in all components with
+    same level and for children
+    - but not for the higher level routers
