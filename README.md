@@ -6,6 +6,7 @@
 => NavLink
 => useNavigate
 => useParams
+=> loader
 
 344*:
     - how to set up router
@@ -30,3 +31,5 @@
     - relative path vs relative route
 358* children inside children
     - nested routing
+359*
+    - using loader to fetch data before rendering page
