@@ -18,7 +18,6 @@ export default function EventsPage() {
     return <>
         <ul>
             {EVENTS.map(event => <li key={event.id}><Link to={`/events/${event.id}`}>{event.title}</Link></li>)}
-            <li><Link to="events/"></Link></li>
         </ul>
     </>
 }
