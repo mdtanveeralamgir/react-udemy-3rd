@@ -26,20 +26,24 @@ import EventsPage from './Page/EventsPage';
 import EventDetailPage from "./Page/EventDetailpage";
 import NewEventPage from "./Page/NewEventPage";
 import EditEventPage from "./Page/EditEventPage";
-import MainNavigation from "./components/MainNavigation";
-import EventsNavigation from "./components/EventsNavigation";
+import EventsLayout from "./Page/EventsLayout";
+import NavigationLayout from "./Page/NavigationLayout";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainNavigation/>,
+        element: <NavigationLayout/>,
         children:[
             {
+                index: true,
+                element: <HomePage/>
+            },
+            {
                 path: "events",
-                element: <EventsNavigation/>,
+                element: <EventsLayout/>,
                 children:[
                     {
-                        path: "",
+                        index: true,
                         element: <EventsPage/>
                     },
                     {
@@ -55,11 +59,7 @@ const router = createBrowserRouter([
                         element: <EditEventPage/>
                     },
                 ]
-            },
-            {
-                index: true,
-                element: <HomePage/>
-            },
+            }
         ]
     }
 
