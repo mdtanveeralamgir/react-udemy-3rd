@@ -41,4 +41,7 @@
     - but not for the higher level routers
 364*: useNavigation
     - useNavigation is used to find out if use navigating a link
-    - 
+    
+365*: 
+    - loader supports to send response directly to the loader
+    - useLoaderData then converts that response to data
