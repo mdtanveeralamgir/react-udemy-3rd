@@ -8,6 +8,7 @@
 => useParams
 => loader
 => useNavigation
+=> useRouteError
 
 344*:
     - how to set up router
@@ -47,3 +48,5 @@
     - useLoaderData then converts that response to data
 367*: errorElement
     - using errorElement we can display error page thrown by loader.
+368*: useRouteerror
+    - using useRouteError to capture errors thrown from router

@@ -19,12 +19,12 @@ function EventsPage() {
 export default EventsPage;
 
 export async function loader() {
-    const response = await fetch('http://localhost:8080/evnts');
+    const response = await fetch('http://localhost:8080/events');
 
     if (!response.ok) {
         //One way to return error and deal with the error in the component
         // return {isError: true, message: 'Something went wrong!'};
-        throw {message: 'Something went wrong!'}
+        throw new Response(JSON.stringify({message: 'Something went wrong!'}), {status: 500});
     } else {
         /*
         loader supports to return browser's built in function for response
