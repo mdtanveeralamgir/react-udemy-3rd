@@ -45,7 +45,7 @@ const router = createBrowserRouter([
                     {
                         index: true,
                         element: <EventsPage/>,
-                        loader: loadPage()
+                        loader: loadPage
                     },
                     {
                         path: "new",

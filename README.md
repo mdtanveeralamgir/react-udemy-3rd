@@ -7,6 +7,7 @@
 => useNavigate
 => useParams
 => loader
+=> useNavigation
 
 344*:
     - how to set up router
@@ -38,3 +39,6 @@
     - the useLoaderData will be available in all components with
     same level and for children
     - but not for the higher level routers
+364*: useNavigation
+    - useNavigation is used to find out if use navigating a link
+    - 
