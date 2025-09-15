@@ -50,3 +50,5 @@
     - using errorElement we can display error page thrown by loader.
 368*: useRouteerror
     - using useRouteError to capture errors thrown from router
+369:
+    - json() not supported by react-route-dom
