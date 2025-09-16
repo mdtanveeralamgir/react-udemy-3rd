@@ -52,3 +52,5 @@
     - using useRouteError to capture errors thrown from router
 369:
     - json() not supported by react-route-dom
+370*:
+    - passing param to loader function
