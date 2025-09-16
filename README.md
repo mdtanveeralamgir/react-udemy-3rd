@@ -9,6 +9,7 @@
 => loader
 => useNavigation
 => useRouteError
+=> useRouteLoaderData
 
 344*:
     - how to set up router
@@ -54,3 +55,5 @@
     - json() not supported by react-route-dom
 370*:
     - passing param to loader function
+371*: useRouteLoaderData
+    - having one loader for all children
