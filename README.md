@@ -57,3 +57,6 @@
     - passing param to loader function
 371*: useRouteLoaderData
     - having one loader for all children
+373*:
+    - Add a new event using action in router
+    - redirect to different page using router redirect
