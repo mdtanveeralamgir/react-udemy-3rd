@@ -11,6 +11,10 @@ function EventForm({method, event}) {
     }
 
     return (
+        //This Form of react-router-dom automatically sends it to the active route
+        //it also calls the action function defined in that route
+        //adding action can send it to specific route
+        // <Form method="post" action='/other-route' className={classes.form}>
         <Form method="post" className={classes.form}>
             <p>
                 <label htmlFor="title">Title</label>

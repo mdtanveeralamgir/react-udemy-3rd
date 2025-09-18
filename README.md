@@ -10,6 +10,7 @@
 => useNavigation
 => useRouteError
 => useRouteLoaderData
+=> useSubmit
 
 344*:
     - how to set up router
@@ -60,3 +61,6 @@
 373*:
     - Add a new event using action in router
     - redirect to different page using router redirect
+374*: useSubmit
+    - submit using action from parent element
+    - sending request using action without form element
