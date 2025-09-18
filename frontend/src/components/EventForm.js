@@ -1,4 +1,4 @@
-import {useNavigate, useNavigation} from 'react-router-dom';
+import {useNavigate, useNavigation, useActionData} from 'react-router-dom';
 import {Form} from 'react-router-dom';
 
 import classes from './EventForm.module.css';
@@ -7,6 +7,7 @@ function EventForm({method, event}) {
     const navigate = useNavigate();
     const navigation = useNavigation();
     const isSubmitting = navigation.state === 'submitting';
+    const data = useActionData();
 
     function cancelHandler() {
         navigate('..');
@@ -18,6 +19,9 @@ function EventForm({method, event}) {
         //adding action can send it to specific route
         // <Form method="post" action='/other-route' className={classes.form}>
         <Form method="post" className={classes.form}>
+            {data && data.errors && <ul>
+                {Object.values(data.errors).map((error) => <li key={error}>{error}</li>)}
+            </ul>}
             <p>
                 <label htmlFor="title">Title</label>
                 <input id="title" type="text" name="title" required defaultValue={event?.title}/>
