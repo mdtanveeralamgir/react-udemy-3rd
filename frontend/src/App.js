@@ -22,37 +22,56 @@
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from './Page/HomePage';
-import EventsPage from './Page/EventsPage';
-import EventDetailPage from "./Page/EventDetailpage";
-import NewEventPage from "./Page/NewEventPage";
+import EventsPage, {loader as loadPage} from './Page/EventsPage';
+import EventDetailPage, {loader as loadEventDetails, action as eventDeleteAction} from "./Page/EventDetailpage";
+import NewEventPage, {action as newEventAction} from "./Page/NewEventPage";
 import EditEventPage from "./Page/EditEventPage";
-import MainNavigation from "./components/MainNavigation";
+import EventsLayout from "./Page/EventsLayout";
+import NavigationLayout from "./Page/NavigationLayout";
+import ErrorPage from "./Page/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainNavigation/>,
-        children:[
+        element: <NavigationLayout/>,
+        errorElement: <ErrorPage/>,
+        children: [
             {
                 index: true,
                 element: <HomePage/>
             },
             {
                 path: "events",
-                element: <EventsPage/>
-            },
-            {
-                path: "events/new",
-                element: <NewEventPage/>
-            },
-            {
-                path: "events/:id",
-                element: <EventDetailPage/>
-            },
-            {
-                path: "events/:id/edit",
-                element: <EditEventPage/>
-            },
+                element: <EventsLayout/>,
+                children: [
+                    {
+                        index: true,
+                        element: <EventsPage/>,
+                        loader: loadPage
+                    },
+                    {
+                        path: "new",
+                        element: <NewEventPage/>,
+                        action: newEventAction,
+                    },
+                    {
+                        path: ':id',
+                        id: 'event-detail',
+                        loader: loadEventDetails,
+                        children: [
+                            {
+                                index: true,
+                                element: <EventDetailPage/>,
+                                action: eventDeleteAction,
+                            },
+                            {
+                                path: "edit",
+                                element: <EditEventPage/>,
+                            },
+                        ]
+                    },
+                ]
+            }
         ]
     }
 
