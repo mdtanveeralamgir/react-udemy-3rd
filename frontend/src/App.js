@@ -24,11 +24,12 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from './Page/HomePage';
 import EventsPage, {loader as loadPage} from './Page/EventsPage';
 import EventDetailPage, {loader as loadEventDetails, action as eventDeleteAction} from "./Page/EventDetailpage";
-import NewEventPage, {action as newEventAction} from "./Page/NewEventPage";
+import NewEventPage from "./Page/NewEventPage";
 import EditEventPage from "./Page/EditEventPage";
 import EventsLayout from "./Page/EventsLayout";
 import NavigationLayout from "./Page/NavigationLayout";
 import ErrorPage from "./Page/ErrorPage";
+import {action as manipulateEvent} from './components/EventForm';
 
 const router = createBrowserRouter([
     {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
                     {
                         path: "new",
                         element: <NewEventPage/>,
-                        action: newEventAction,
+                        action: manipulateEvent,
                     },
                     {
                         path: ':id',
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
                             {
                                 path: "edit",
                                 element: <EditEventPage/>,
+                                action: manipulateEvent,
                             },
                         ]
                     },
