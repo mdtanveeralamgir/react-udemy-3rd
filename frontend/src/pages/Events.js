@@ -1,24 +1,23 @@
-import {useLoaderData} from "react-router-dom";
+import {useLoaderData, Await} from "react-router-dom";
 
 import EventsList from '../components/EventsList';
+import {Suspense} from "react";
 
 function Events() {
-    const data = useLoaderData();
+    const {events} = useLoaderData();
     // if (data.isError) {
     //     return <p>{data.message}</p>;
     // }
-    const events = data.events;
-
-    return (
-        <>
-            <EventsList events={events}/>
-        </>
-    );
+    return <Suspense fallBack={<p>Loading...</p>}>
+        <Await resolve={events}>
+            {(loadedEvents) => <EventsList events={loadedEvents}/>}
+        </Await>
+    </Suspense>
 }
 
 export default Events;
 
-export async function loader() {
+async function loadEvents() {
     const response = await fetch('http://localhost:8080/events');
 
     if (!response.ok) {
@@ -32,6 +31,14 @@ export async function loader() {
         means the response we get from fetch can be sent directrly to the component
         useLoaderData will automaticaly convert that response into data
          */
-        return response;
+        const resData = await response.json();
+        return resData.events;
     }
+}
+
+
+export async function loader() {
+    return {
+        events: loadEvents(),
+    };
 }
