@@ -2,7 +2,7 @@ import {redirect, useParams} from "react-router-dom";
 import EventItem from "../components/EventItem";
 import {useRouteLoaderData} from "react-router-dom";
 
-export default function EventDetailPage() {
+export default function EventDetail() {
     const {id} = useParams();
     const data = useRouteLoaderData('event-detail');
     return <EventItem event={data.event}/>

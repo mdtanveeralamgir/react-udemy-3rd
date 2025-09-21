@@ -12,6 +12,7 @@
 => useRouteLoaderData
 => useSubmit
 => useActionData
+=> useFetcher
 
 344*:
     - how to set up router
@@ -68,3 +69,6 @@
 376*: useActionData
     - Catch error messages from backend using useActionData
     - display error messages sent by backend using useActionData
+378*: useFetcher
+    - useFetcher.form triggers an action without nevigaing to that page
+    -

@@ -2,7 +2,7 @@ import PageContent from "../components/PageContent";
 import {useRouteError} from 'react-router-dom';
 import MainNavigation from "../components/MainNavigation";
 
-export default function ErrorPage() {
+export default function Error() {
     const error = useRouteError();
     //if a response has been thrown then error.status will be available
     let title = "An error occured!";
@@ -13,8 +13,8 @@ export default function ErrorPage() {
             break;
 
         case 404:
-            title = "Page not found";
-            message = "The page you are looking for does not exist";
+            title = "pages not found";
+            message = "The pages you are looking for does not exist";
             break;
     }
 
