@@ -3,3 +3,5 @@
 388*: useSearchParam
     - set query param and get access to it using useSearchParam
     - toggle between sigin/register using query param
+389*: 
+    - auto action to save a new user
