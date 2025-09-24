@@ -10,3 +10,5 @@
 392*:
     - Saving auto token in local storage
     - sending auth token to BE with requests
+393*: logout
+    - logout using react path and action
