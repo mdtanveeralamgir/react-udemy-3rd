@@ -15,3 +15,6 @@
     - logout using react path and action
 394*: useRouteLoaderData
     - conditionaly display buttons if logged in using loader
+396*:
+    - Redirect user to auth page if they try to access authorized page without logged in
+    - usig loader
