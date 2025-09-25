@@ -18,3 +18,5 @@
 396*:
     - Redirect user to auth page if they try to access authorized page without logged in
     - usig loader
+398*:
+    - Expire token using setTimeout and useEffect
