@@ -1,6 +1,7 @@
 => useSearchParam
 => useActionData
 => useNavigation
+=> useRouteLoaderData
 
 388*: useSearchParam
     - set query param and get access to it using useSearchParam
@@ -12,3 +13,5 @@
     - sending auth token to BE with requests
 393*: logout
     - logout using react path and action
+394*: useRouteLoaderData
+    - conditionaly display buttons if logged in using loader

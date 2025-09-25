@@ -14,13 +14,17 @@ import RootLayout from './pages/Root';
 import {action as manipulateEventAction} from './components/EventForm';
 import NewsletterPage, {action as newsletterAction} from './pages/Newsletter';
 import Authentication, {action as authFormAction} from "./pages/Authentication";
-import {action as logoutAction} from './pages/Logout'
+import {action as logoutAction} from './pages/Logout';
+import {tokenLoader as authTokenLoader} from "./util/Auth";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayout/>,
         errorElement: <ErrorPage/>,
+        id: 'root',
+        //if token doesn't exists this loader will reactively refresh all the pages that uses the token
+        loader: authTokenLoader,
         children: [
             {index: true, element: <HomePage/>},
             {path: 'auth', element: <Authentication/>, action: authFormAction},
