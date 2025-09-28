@@ -8,7 +8,9 @@ export default function NewEventsSection() {
 
     const {data, isPending, isError, error} = useQuery({
         queryKey: ['events'], //to store in cache
-        queryFn: fetchEvents //The function (async) that fetchs the data
+        queryFn: fetchEvents, //The function (async) that fetchs the data
+        staleTime: 5000,  //milisecond; //default is 0; //time to wait before send request to db after fetching from cache
+        //gcTime: 30000 //milisecond; //garbage collector; //default is 5 min; //how long the cache should last
     })
 
     let content;
