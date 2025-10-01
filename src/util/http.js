@@ -1,11 +1,12 @@
-export async function fetchEvents({signal, searchTerm}) {
-
+export async function fetchEvents({ signal, searchTerm }) {
+    console.log(searchTerm);
     let url = 'http://localhost:3000/events';
-    if (searchTerm)
-        url += `?search=${searchTerm}`;
 
-    //The signal passed by react query is to abort the query if react query wants to
-    const response = await fetch(url, {signal: signal});
+    if (searchTerm) {
+        url += '?search=' + searchTerm;
+    }
+
+    const response = await fetch(url, { signal: signal });
 
     if (!response.ok) {
         const error = new Error('An error occurred while fetching the events');
@@ -14,7 +15,29 @@ export async function fetchEvents({signal, searchTerm}) {
         throw error;
     }
 
-    const {events} = await response.json();
+    const { events } = await response.json();
 
     return events;
+}
+
+
+export async function createNewEvent(eventData) {
+    const response = await fetch(`http://localhost:3000/events`, {
+        method: 'POST',
+        body: JSON.stringify(eventData),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        const error = new Error('An error occurred while creating the event');
+        error.code = response.status;
+        error.info = await response.json();
+        throw error;
+    }
+
+    const { event } = await response.json();
+
+    return event;
 }

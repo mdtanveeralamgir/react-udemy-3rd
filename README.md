@@ -1,4 +1,5 @@
 => useQuery
+=> useMutation
 
 410*: useQuery
     - setup and use tanstack query
@@ -16,3 +17,5 @@
     - obj destructuring to pass right value to fetch function
 414:
     - enable and disable query
+415*: useMutation
+    - updating data to the server using mutation
