@@ -19,7 +19,7 @@ export default function FindEventSection() {
            changes. because useRef does not make the component re-render if input changes
         * */
         queryKey: ['events', {search: searchTerm}],
-        queryFn: () => fetchEvents(searchTerm),
+        queryFn: ({signal}) => fetchEvents({signal, searchTerm}),
     })
 
     function handleSubmit(event) {

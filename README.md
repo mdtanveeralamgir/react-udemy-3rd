@@ -11,3 +11,6 @@
     - if the event key is save for 2 different components or query then react query will
       use the same result for both of them
     - send param from useQuery to the function that fetches data
+413*: abort request
+    - abort request 
+    - obj destructuring to pass right value to fetch function

@@ -1,10 +1,11 @@
-export async function fetchEvents(searchParam = null) {
+export async function fetchEvents({signal, searchParam: searchTerm}) {
 
     let url = 'http://localhost:3000/events';
-    if (searchParam)
-        url += `?search=${searchParam}`;
+    if (searchTerm)
+        url += `?search=${searchTerm}`;
 
-    const response = await fetch(url);
+    //The signal passed by react query is to abort the query if react query wants to
+    const response = await fetch(url, {signal: signal});
 
     if (!response.ok) {
         const error = new Error('An error occurred while fetching the events');
