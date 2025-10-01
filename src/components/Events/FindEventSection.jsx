@@ -7,9 +7,11 @@ import EventItem from "./EventItem.jsx";
 
 export default function FindEventSection() {
     const searchElement = useRef();
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState();
 
-    const {data, isPending, isError, error} = useQuery({
+    //difference between isPending and isLoading is that the isLoading is not ture if
+    //the query is disabled
+    const {data, isLoading, isError, error} = useQuery({
         /*
         * if the event key is save for 2 different components or query then react query will
             use the same result for both of them
@@ -20,6 +22,7 @@ export default function FindEventSection() {
         * */
         queryKey: ['events', {search: searchTerm}],
         queryFn: ({signal}) => fetchEvents({signal, searchTerm}),
+        enabled: searchTerm !== undefined, //if the query should work or not
     })
 
     function handleSubmit(event) {
@@ -28,7 +31,7 @@ export default function FindEventSection() {
     }
 
     let content = <p>Please enter a search term and to find events.</p>;
-    if (isPending) {
+    if (isLoading) {
         content = <LoadingIndicator/>
     }
     if (isError)
