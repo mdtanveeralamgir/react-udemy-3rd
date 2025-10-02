@@ -1,5 +1,4 @@
-import {useNavigate, useNavigation, useActionData} from 'react-router-dom';
-import {Form} from 'react-router-dom';
+import {useNavigate, useNavigation, useActionData, redirect, Form} from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
@@ -18,7 +17,7 @@ function EventForm({method, event}) {
         //it also calls the action function defined in that route
         //adding action can send it to specific route
         // <Form method="post" action='/other-route' className={classes.form}>
-        <Form method="post" className={classes.form}>
+        <Form method={method} className={classes.form}>
             {data && data.errors && <ul>
                 {Object.values(data.errors).map((error) => <li key={error}>{error}</li>)}
             </ul>}
@@ -49,3 +48,33 @@ function EventForm({method, event}) {
 }
 
 export default EventForm;
+
+export async function action({request, params}) {
+    const method = request.method;
+    const data = await request.formData();
+    const eventData = {
+        title: data.get('title'),
+        date: data.get('date'),
+        description: data.get('description'),
+        image: data.get('image')
+    }
+    let url = 'http://localhost:8080/events';
+    if (method === 'PATCH') {
+        const eventID = params.id;
+        url = 'http://localhost:8080/events/' + eventID;
+    }
+    const response = await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData)
+    });
+    if (response.status === 422)
+        return response;
+    if (!response.ok) {
+        throw new Response(JSON.stringify({message: 'Something went wrong!'}), {status: 500});
+    }
+
+    return redirect('/events');
+}

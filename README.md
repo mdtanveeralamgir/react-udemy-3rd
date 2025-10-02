@@ -12,6 +12,9 @@
 => useRouteLoaderData
 => useSubmit
 => useActionData
+=> useFetcher
+=> Await
+=> Suspense
 
 344*:
     - how to set up router
@@ -68,3 +71,9 @@
 376*: useActionData
     - Catch error messages from backend using useActionData
     - display error messages sent by backend using useActionData
+378*: useFetcher
+    - useFetcher.form triggers an action without nevigaing to that page
+379*: Await, Suspense
+    - Loading a page before the data has been fetched
+    - using suspense to show fallback and display the page before data has been fetched
+
