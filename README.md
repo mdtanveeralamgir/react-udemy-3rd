@@ -19,3 +19,6 @@
     - enable and disable query
 415*: useMutation
     - updating data to the server using mutation
+417*: onSuccess, invalidQueries
+    - refretch data using onsuccess and navigate away
+    - invalidate query cache and refretch data using query key
