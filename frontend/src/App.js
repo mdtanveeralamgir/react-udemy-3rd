@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 
 import EditEventPage from './pages/EditEvent';
 import ErrorPage from './pages/Error';
@@ -6,28 +6,35 @@ import EventDetailPage, {
     loader as eventDetailLoader,
     action as deleteEventAction,
 } from './pages/EventDetail';
-import EventsPage, { loader as eventsLoader } from './pages/Events';
-import EventsRootLayout from './pages/EventsLayout';
+import EventsPage, {loader as eventsLoader} from './pages/Events';
+import EventsRootLayout from './pages/EventsRoot';
 import HomePage from './pages/Home';
 import NewEventPage from './pages/NewEvent';
-import RootLayout from './pages/NavigationLayout';
-import { action as manipulateEventAction } from './components/EventForm';
-import NewsletterPage, { action as newsletterAction } from './pages/Newsletter';
+import RootLayout from './pages/Root';
+import {action as manipulateEventAction} from './components/EventForm';
+import NewsletterPage, {action as newsletterAction} from './pages/Newsletter';
+import Authentication, {action as authFormAction} from "./pages/Authentication";
+import {action as logoutAction} from './pages/Logout';
+import {tokenLoader as authTokenLoader, checkAuthToken} from "./util/Auth";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <RootLayout />,
-        errorElement: <ErrorPage />,
+        element: <RootLayout/>,
+        errorElement: <ErrorPage/>,
+        id: 'root',
+        //if token doesn't exists this loader will reactively refresh all the pages that uses the token
+        loader: authTokenLoader,
         children: [
-            { index: true, element: <HomePage /> },
+            {index: true, element: <HomePage/>},
+            {path: 'auth', element: <Authentication/>, action: authFormAction},
             {
                 path: 'events',
-                element: <EventsRootLayout />,
+                element: <EventsRootLayout/>,
                 children: [
                     {
                         index: true,
-                        element: <EventsPage />,
+                        element: <EventsPage/>,
                         loader: eventsLoader,
                     },
                     {
@@ -37,34 +44,50 @@ const router = createBrowserRouter([
                         children: [
                             {
                                 index: true,
-                                element: <EventDetailPage />,
+                                element: <EventDetailPage/>,
                                 action: deleteEventAction,
                             },
                             {
                                 path: 'edit',
-                                element: <EditEventPage />,
+                                element: <EditEventPage/>,
                                 action: manipulateEventAction,
+                                loader: checkAuthToken,
                             },
                         ],
                     },
                     {
                         path: 'new',
-                        element: <NewEventPage />,
+                        element: <NewEventPage/>,
                         action: manipulateEventAction,
+                        loader: checkAuthToken,
                     },
                 ],
             },
             {
                 path: 'newsletter',
-                element: <NewsletterPage />,
+                element: <NewsletterPage/>,
                 action: newsletterAction,
+            },
+            {
+              path: 'logout',
+              action: logoutAction,
             },
         ],
     },
-]);
+],
+    {
+        future: {
+            // v7_fetcherPersist: true,
+            // v7_normalizeFormMethod: true,
+            // v7_partialHydration: true,
+            v7_skipActionErrorRevalidation: true,
+        },
+    });
 
 function App() {
-    return <RouterProvider router={router} />;
+    return <RouterProvider router={router} future={{
+        v7_startTransition: true,
+    }}/>;
 }
 
 export default App;
