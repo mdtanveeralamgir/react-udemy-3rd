@@ -1,5 +1,6 @@
 => useQuery
 => useMutation
+=> refetchType
 
 410*: useQuery
     - setup and use tanstack query
@@ -22,3 +23,6 @@
 417*: onSuccess, invalidQueries
     - refretch data using onsuccess and navigate away
     - invalidate query cache and refretch data using query key
+420*: refetchType
+    - prevent sending a query right after invadating a query
+    - only re-send the query when re-rendering page after invidating
