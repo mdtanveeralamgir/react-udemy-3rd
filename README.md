@@ -26,3 +26,5 @@
 420*: refetchType
     - prevent sending a query right after invadating a query
     - only re-send the query when re-rendering page after invidating
+421*:
+    - confirmation before deleting event using modal, useState, isPending, isError from mutation
