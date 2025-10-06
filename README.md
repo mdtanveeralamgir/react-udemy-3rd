@@ -28,3 +28,6 @@
     - only re-send the query when re-rendering page after invidating
 421*:
     - confirmation before deleting event using modal, useState, isPending, isError from mutation
+424*:
+    - updating UI before db updates 
+    - rollback if db updates fail
