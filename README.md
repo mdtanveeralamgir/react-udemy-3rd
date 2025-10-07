@@ -1,6 +1,7 @@
 => useQuery
 => useMutation
 => refetchType
+=> useIsFetching
 
 410*: useQuery
     - setup and use tanstack query
@@ -31,3 +32,5 @@
 424*:
     - updating UI before db updates 
     - rollback if db updates fail
+426*: useIsFetching
+    - loader, action, useIsFetching for react query
