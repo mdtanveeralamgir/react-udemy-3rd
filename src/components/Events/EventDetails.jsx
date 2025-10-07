@@ -13,7 +13,8 @@ export default function EventDetails() {
     const [isDeleting, setIsDeleting] = useState(false);
 
     const {data, isLoading, isError, error} = useQuery({
-        queryKey: ['events', id], queryFn: (signal) => fetchEvent({id, signal}),
+        queryKey: ['events', id],
+        queryFn: ({signal}) => fetchEvent({id, signal}),
     });
 
     const {mutate, isPending: isPendingDeletion, isError: isErrorDeleting, error: errorDeleting} = useMutation({
@@ -69,7 +70,7 @@ export default function EventDetails() {
                     </nav>
                 </header>
                 <div id="event-details-content">
-                    <img src={"http://localhost:3000/" + data.image} alt={data.title}/>
+                    <img src={`http://localhost:3000/${data.image}`} alt={data.title}/>
                     <div id="event-details-info">
                         <div>
                             <p id="event-details-location">{data.location}</p>

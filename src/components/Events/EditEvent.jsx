@@ -14,27 +14,23 @@ export default function EditEvent() {
         queryKey: ['events', id],
         queryFn: ({signal}) => fetchEvents({signal, id: id}),
     });
-    const {mutate} =
-        useMutation({
-            mutationFn: updateEvent,
-
-            onMutate: async (data) => {
-                const event = data.event;
-                await queryClient.cancelQueries(['events', id])//cancelling any other same query
-                const previousEvent = queryClient.getQueriesData(['events', id])//getting old saved data
-
-
-                queryClient.setQueriesData(['events', id], event)//updating the data instantly before even updating in db
-                return {previousEvent};
-            },
-            onError: (error, data, context) => {
-                queryClient.setQueriesData(['events', id], context.previousEvent); //rolling back to previous event if db update fails
-            },
-            //this function runs for any response error/success
-            onSettled: () => {
-                queryClient.invalidateQueries(['events', id]);//refetch the data
-            }
-        })
+    const {mutate} = useMutation({
+        mutationFn: updateEvent,
+        onMutate: async (data) => {
+            const event = data.event;
+            await queryClient.cancelQueries({queryKey: ['events', id]})//cancelling any other same query
+            const previousEvent = queryClient.getQueriesData(['events', id])//getting old saved data
+            queryClient.setQueriesData(['events', id], event)//updating the data instantly before even updating in db
+            return {previousEvent};
+        },
+        onError: (error, data, context) => {
+            queryClient.setQueriesData(['events', id], context.previousEvent); //rolling back to previous event if db update fails
+        },
+        //this function runs for any response error/success
+        onSettled: () => {
+            queryClient.invalidateQueries(['events', id]);//refetch the data
+        }
+    })
 
 
     function handleSubmit(formData) {
