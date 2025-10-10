@@ -13,3 +13,4 @@
 433: css/favicon
     - how to add css
     - how to add favicon
+    - organize folder
