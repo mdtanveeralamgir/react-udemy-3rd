@@ -2,6 +2,7 @@
 => Link
 => layout
 => css/favicon
+=> dymanic route (slug)
 
 430*: pages
     - how routing works using pages
@@ -14,3 +15,5 @@
     - how to add css
     - how to add favicon
     - organize folder
+435*: dymanic route
+    - catching the route param in the page using slug
