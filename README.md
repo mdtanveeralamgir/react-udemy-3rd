@@ -3,6 +3,7 @@
 => layout
 => css/favicon
 => dymanic route (slug)
+=> Image
 
 430*: pages
     - how routing works using pages
@@ -17,3 +18,5 @@
     - organize folder
 435*: dymanic route
     - catching the route param in the page using slug
+442: Image
+    - using next.js Image component
