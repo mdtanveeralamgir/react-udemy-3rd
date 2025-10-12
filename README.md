@@ -4,6 +4,7 @@
 => css/favicon
 => dymanic route (slug)
 => Image
+=> use client
 
 430*: pages
     - how routing works using pages
@@ -20,3 +21,5 @@
     - catching the route param in the page using slug
 442: Image
     - using next.js Image component
+446*: use client
+    - using use client to render page on client side
