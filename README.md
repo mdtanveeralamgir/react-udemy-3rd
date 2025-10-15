@@ -5,6 +5,7 @@
 => dymanic route (slug)
 => Image
 => use client
+=> usePathName
 
 430*: pages
     - how routing works using pages
@@ -23,3 +24,5 @@
     - using next.js Image component
 446*: use client
     - using use client to render page on client side
+447*: usePathname
+    - get current path using usePathname
