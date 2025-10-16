@@ -28,3 +28,6 @@
     - get current path using usePathname
 450*:
     - fetching meals using sqlite3 db
+451*:
+    - adding loading page
+    - shows up by default without attaching loading page
