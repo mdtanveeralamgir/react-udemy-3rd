@@ -31,3 +31,5 @@
 451*:
     - adding loading page
     - shows up by default without attaching loading page
+452*:
+    - showing loading using suspense
