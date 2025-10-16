@@ -26,3 +26,5 @@
     - using use client to render page on client side
 447*: usePathname
     - get current path using usePathname
+450*:
+    - fetching meals using sqlite3 db
