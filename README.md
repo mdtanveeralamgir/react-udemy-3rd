@@ -1,5 +1,7 @@
 => useQuery
 => useMutation
+=> refetchType
+=> useIsFetching
 
 410*: useQuery
     - setup and use tanstack query
@@ -19,3 +21,16 @@
     - enable and disable query
 415*: useMutation
     - updating data to the server using mutation
+417*: onSuccess, invalidQueries
+    - refretch data using onsuccess and navigate away
+    - invalidate query cache and refretch data using query key
+420*: refetchType
+    - prevent sending a query right after invadating a query
+    - only re-send the query when re-rendering page after invidating
+421*:
+    - confirmation before deleting event using modal, useState, isPending, isError from mutation
+424*:
+    - updating UI before db updates 
+    - rollback if db updates fail
+426*: useIsFetching
+    - loader, action, useIsFetching for react query
