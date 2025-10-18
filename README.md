@@ -1,36 +1,39 @@
-=> useQuery
-=> useMutation
-=> refetchType
-=> useIsFetching
+=> pages
+=> Link
+=> layout
+=> css/favicon
+=> dymanic route (slug)
+=> Image
+=> use client
+=> usePathName
 
-410*: useQuery
-    - setup and use tanstack query
-411*: staleTime, gcTime,
-    - react query uses cache
-    - it displays the data from cache immediately
-    - but also send request to db to fetch data to make sure 
-      if there is any change in the data it updates that.
-412*:
-    - if the event key is save for 2 different components or query then react query will
-      use the same result for both of them
-    - send param from useQuery to the function that fetches data
-413*: abort request
-    - abort request 
-    - obj destructuring to pass right value to fetch function
-414:
-    - enable and disable query
-415*: useMutation
-    - updating data to the server using mutation
-417*: onSuccess, invalidQueries
-    - refretch data using onsuccess and navigate away
-    - invalidate query cache and refretch data using query key
-420*: refetchType
-    - prevent sending a query right after invadating a query
-    - only re-send the query when re-rendering page after invidating
-421*:
-    - confirmation before deleting event using modal, useState, isPending, isError from mutation
-424*:
-    - updating UI before db updates 
-    - rollback if db updates fail
-426*: useIsFetching
-    - loader, action, useIsFetching for react query
+430*: pages
+    - how routing works using pages
+431*: Link
+    - navigate to pages using Link
+432: layout
+    - how does the page wrapper <html> <body> work
+    - how does the header work
+433: css/favicon
+    - how to add css
+    - how to add favicon
+    - organize folder
+435*: dymanic route
+    - catching the route param in the page using slug
+442: Image
+    - using next.js Image component
+446*: use client
+    - using use client to render page on client side
+447*: usePathname
+    - get current path using usePathname
+450*:
+    - fetching meals using sqlite3 db
+451*:
+    - adding loading page
+    - shows up by default without attaching loading page
+452*:
+    - showing loading using suspense
+453*:
+    - next.js error page to catch all errors
+454*:
+    - next.js default not found page

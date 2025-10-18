@@ -4,3 +4,7 @@ dist
 dist-ssr
 *.local
 .vite
+.next/
+#/.next/static/webpack/d5766e5193baf1e1.webpack.hot-update.json
+#/.next/server/app/about/page_client-reference-manifest.js
+#/.next/static/webpack/webpack.d5766e5193baf1e1.hot-update.js
