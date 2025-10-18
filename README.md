@@ -35,3 +35,5 @@
     - showing loading using suspense
 453*:
     - next.js error page to catch all errors
+454*:
+    - next.js default not found page
