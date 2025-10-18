@@ -33,3 +33,5 @@
     - shows up by default without attaching loading page
 452*:
     - showing loading using suspense
+453*:
+    - next.js error page to catch all errors
