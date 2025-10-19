@@ -7,6 +7,7 @@
 => use client
 => usePathName
 => fileReader (js)
+=> 'use server'
 
 430*: pages
     - how routing works using pages
@@ -42,3 +43,5 @@
     - triggering click event of an input using useRef
 459*: fileReader
     - image picker and preview using fileReader
+462*: 'use server'
+    - submit form using use server annotation
