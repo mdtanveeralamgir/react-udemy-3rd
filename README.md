@@ -6,6 +6,7 @@
 => Image
 => use client
 => usePathName
+=> fileReader (js)
 
 430*: pages
     - how routing works using pages
@@ -39,3 +40,5 @@
     - next.js default not found page
 458*:
     - triggering click event of an input using useRef
+459*: fileReader
+    - image picker and preview using fileReader
