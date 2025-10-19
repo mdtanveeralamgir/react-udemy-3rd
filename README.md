@@ -47,3 +47,6 @@
     - submit form using use server annotation
 462*:
     - separating client and server components
+463*: xss, slugify
+    - create slug using slugify
+    - clean data using xss to prevent cross site scripting
