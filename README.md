@@ -50,3 +50,5 @@
 463*: xss, slugify
     - create slug using slugify
     - clean data using xss to prevent cross site scripting
+464*:
+    - adding a new item after processing the added image from file
