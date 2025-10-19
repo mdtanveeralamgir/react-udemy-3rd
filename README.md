@@ -43,5 +43,7 @@
     - triggering click event of an input using useRef
 459*: fileReader
     - image picker and preview using fileReader
-462*: 'use server'
+461*: 'use server'
     - submit form using use server annotation
+462*:
+    - separating client and server components
