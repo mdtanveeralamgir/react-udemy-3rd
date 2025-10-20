@@ -9,6 +9,7 @@
 => fileReader (js)
 => 'use server'
 => useFormStatus
+=> useActionState
 
 430*: pages
     - how routing works using pages
@@ -55,3 +56,5 @@
     - adding a new item after processing the added image from file
 465*: useFormStatus
     - get the status of a form and change submitting
+467*: useActionState
+    - submitting form and keeping the inputs value if invalid
