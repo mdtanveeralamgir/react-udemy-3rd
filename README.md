@@ -58,3 +58,6 @@
     - get the status of a form and change submitting
 467*: useActionState
     - submitting form and keeping the inputs value if invalid
+469*: revalidatePath
+    - clear cache using revalidatePath
+    - for a page or all nested pages
