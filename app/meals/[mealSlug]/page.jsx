@@ -3,8 +3,21 @@ import Image from "next/image";
 import {getMeal} from "@/lib/meals";
 import NotFound from "@/app/not-found";
 
+export async function generateMetadata({ params }) {
+    const { mealSlug } = params;
+    const meal = await getMeal(mealSlug);
+
+    if (!meal) notFound();
+
+    return {
+        title: meal.title,
+        description: meal.summary,
+    };
+}
+
+
 export default async function MealDetails({params}) {
-    const {mealSlug} = await params;
+    const {mealSlug} = params;
     const meal = await getMeal(mealSlug);
     if (!meal) {
         NotFound(); //finds the closest not-found page

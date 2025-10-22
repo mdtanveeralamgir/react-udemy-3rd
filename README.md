@@ -61,3 +61,5 @@
 469*: revalidatePath
     - clear cache using revalidatePath
     - for a page or all nested pages
+473*
+    - adding dynamic metadata
