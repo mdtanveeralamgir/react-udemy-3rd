@@ -67,4 +67,6 @@
 480-81: useRouter
     - passing param to pages using query string
 487*:
-      - adding layout to _app 
+      - adding layout to _app
+450*:
+  - How not to fetch data using useEffect and useState

@@ -1,4 +1,5 @@
 import MeetupList from "../components/meetups/MeetupList";
+import {useEffect, useState} from "react";
 
 const DUMMY_MEETUPS = [
     {
@@ -17,6 +18,13 @@ const DUMMY_MEETUPS = [
     }
 ]
 export default function HomePage() {
-    return <MeetupList meetups={DUMMY_MEETUPS}/>;
+    //with this state and use effect approach the page will render twice
+    //once with empty data, then again when data has been fetched from db
+    //but next always render the first build page, hence some data will be missing
+    const [loadedMeetups, setLoadedMeetups] = useState([])
+    useEffect(() => {
+        setLoadedMeetups(DUMMY_MEETUPS)
+    }, []);
+    return <MeetupList meetups={loadedMeetups}/>;
 
 }
