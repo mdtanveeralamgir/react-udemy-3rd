@@ -11,6 +11,7 @@
 => useFormStatus
 => useActionState
 => useRouter (next)
+=> getStaticProps
 
 430*: pages
 - how routing works using pages
@@ -70,3 +71,5 @@
       - adding layout to _app
 450*:
   - How not to fetch data using useEffect and useState
+451*: getStaticProps
+  - Fetch data in server

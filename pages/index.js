@@ -1,5 +1,4 @@
 import MeetupList from "../components/meetups/MeetupList";
-import {useEffect, useState} from "react";
 
 const DUMMY_MEETUPS = [
     {
@@ -17,14 +16,16 @@ const DUMMY_MEETUPS = [
         description: 'Angular Meetup Description'
     }
 ]
-export default function HomePage() {
-    //with this state and use effect approach the page will render twice
-    //once with empty data, then again when data has been fetched from db
-    //but next always render the first build page, hence some data will be missing
-    const [loadedMeetups, setLoadedMeetups] = useState([])
-    useEffect(() => {
-        setLoadedMeetups(DUMMY_MEETUPS)
-    }, []);
-    return <MeetupList meetups={loadedMeetups}/>;
+export default function HomePage(props) {
+    return <MeetupList meetups={props.meetups} />;
 
+}
+//this will be called before any component functions like hooks
+//This will also render in server
+export async function getStaticProps() {
+return {
+    props: {
+        meetups: DUMMY_MEETUPS,
+    }
+}
 }
