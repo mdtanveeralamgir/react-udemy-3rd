@@ -20,8 +20,21 @@ export default function HomePage(props) {
     return <MeetupList meetups={props.meetups}/>;
 
 }
+
+//this will be called everytime there is a request
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS,
+//         },
+//     }
+// }
+
 //this will be called before any component functions like hooks
 //This will also render in server
+//this will be called during build process
 export async function getStaticProps() {
     return {
         props: {

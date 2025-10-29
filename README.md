@@ -12,6 +12,8 @@
 => useActionState
 => useRouter (next)
 => getStaticProps
+=> revalidate
+=> getServerSideProps
 
 430*: pages
 - how routing works using pages
@@ -75,3 +77,5 @@
   - Fetch data in server
 492*: revalidate
   - re-generate page with latest data after specific time
+493*: getServerSideProps
+  - SSR with getServerSideProps to regenerate page on every request
