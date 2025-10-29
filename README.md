@@ -79,3 +79,5 @@
   - re-generate page with latest data after specific time
 493*: getServerSideProps
   - SSR with getServerSideProps to regenerate page on every request
+495*: getStaticPaths
+  - generate dynamic pages using getStaticPaths
