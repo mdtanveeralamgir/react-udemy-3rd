@@ -17,15 +17,16 @@ const DUMMY_MEETUPS = [
     }
 ]
 export default function HomePage(props) {
-    return <MeetupList meetups={props.meetups} />;
+    return <MeetupList meetups={props.meetups}/>;
 
 }
 //this will be called before any component functions like hooks
 //This will also render in server
 export async function getStaticProps() {
-return {
-    props: {
-        meetups: DUMMY_MEETUPS,
+    return {
+        props: {
+            meetups: DUMMY_MEETUPS,
+        },
+        revalidate: 10, //re-generated page hence fetch latest data every 10 sec
     }
-}
 }

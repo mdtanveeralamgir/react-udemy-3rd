@@ -69,7 +69,9 @@
     - passing param to pages using query string
 487*:
       - adding layout to _app
-450*:
+490*:
   - How not to fetch data using useEffect and useState
-451*: getStaticProps
+491*: getStaticProps
   - Fetch data in server
+492*: revalidate
+  - re-generate page with latest data after specific time
