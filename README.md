@@ -14,6 +14,7 @@
 => getStaticProps
 => revalidate
 => getServerSideProps
+=> API route for backend
 
 430*: pages
 - how routing works using pages
@@ -81,3 +82,5 @@
   - SSR with getServerSideProps to regenerate page on every request
 495*: getStaticPaths
   - generate dynamic pages using getStaticPaths
+496*: API route
+  - define API route
