@@ -1,4 +1,4 @@
-// import ClientDemo from './ClientDemo';
+import ClientDemo from './ClientDemo';
 
 export default async function RSCDemo() {
     console.log('RSCDemo rendered');
@@ -11,7 +11,8 @@ export default async function RSCDemo() {
             <p>
                 <strong>NEVER</strong> on the client-side!
             </p>
-            {/* <ClientDemo /> */}
+            {/*A client component can be render inside a server component*/}
+            {/* <ClientDemo />*/}
         </div>
     );
 }
