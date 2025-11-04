@@ -1,6 +1,7 @@
 => css animation using @keyframe
 => framer motion
 => AnimatePresence
+=> whileHover
 
 520*: @keyframe
     - css animation using @keyframe
@@ -10,3 +11,5 @@
     - animate appearance of modal using initial and animate
 525*: AnimatePresence
     - animate component that is rendered conditionally
+526*: whileHover
+    - scale a button using whileHover
