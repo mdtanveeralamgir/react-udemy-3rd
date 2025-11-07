@@ -3,6 +3,8 @@
 => AnimatePresence
 => whileHover
 => staggered
+=> useAnimate
+=> 
 
 520*: @keyframe
     - css animation using @keyframe
@@ -16,3 +18,6 @@
     - scale a button using whileHover
 529*: staggered
     - show one by one list items with a delay
+531*: useAnimate
+    - impererative animation.
+    - animate targated elements
