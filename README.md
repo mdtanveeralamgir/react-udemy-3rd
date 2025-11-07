@@ -4,7 +4,8 @@
 => whileHover
 => staggered
 => useAnimate
-=> 
+=> layout
+=> mode and key in AnimatePresence
 
 520*: @keyframe
     - css animation using @keyframe
@@ -21,3 +22,8 @@
 531*: useAnimate
     - impererative animation.
     - animate targated elements
+532*: layout
+    - animate hiding using layout
+533*: AnimatePresence, mode, key
+    - making element wait to apear before disapearing one
+    - separating element inside parent element using key
