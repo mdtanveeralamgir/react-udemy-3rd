@@ -1,15 +1,11 @@
 import {useAccordianContext} from "./Accordion.jsx";
 
 export default function AccordionItem({title, children, className, openId}) {
-    const {openItemId, openItem, closeItem} = useAccordianContext();
+    const {openItemId, toggleItem} = useAccordianContext();
     const isOpen = openItemId === openId;
 
     function handleClick() {
-        if (isOpen) {
-            closeItem();
-        } else {
-            openItem(openId);
-        }
+        toggleItem(openId);
     }
 
     return <li className={className}>

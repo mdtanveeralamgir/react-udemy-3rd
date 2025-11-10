@@ -1,11 +1,12 @@
 import {createContext, useContext, useState} from "react";
+import AccordionItem from "./AccordionItem.jsx";
 
 const AccordionContext = createContext();
 
 export function useAccordianContext() {
     const ctx = useContext(AccordionContext);
 
-    if(!ctx) {
+    if (!ctx) {
         throw new Error("useAccordionContext must be used within an Accordion");
     }
     return ctx;
@@ -14,18 +15,13 @@ export function useAccordianContext() {
 export default function Accordion({children, className}) {
     const [openItemId, setOpenItemId] = useState();
 
-    function openItem(itemId) {
-        setOpenItemId(itemId);
-    }
-
-    function closeItem() {
-        setOpenItemId(null);
+    function toggleItem(id) {
+        setOpenItemId(prevId => prevId === id ? null : id);
     }
 
     const contextValue = {
         openItemId,
-        openItem,
-        closeItem
+        toggleItem
     }
     return (<AccordionContext.Provider value={contextValue}>
         <ul className={className}>
@@ -33,3 +29,5 @@ export default function Accordion({children, className}) {
         </ul>
     </AccordionContext.Provider>)
 }
+
+Accordion.Item = AccordionItem;
