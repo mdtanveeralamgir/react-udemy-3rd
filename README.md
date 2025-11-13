@@ -9,3 +9,5 @@
     - adding more items to compound component to decouple items
 545: Render props
     - setting up search input for render props
+547*: Render Props
+    - Rendering jsx components using render props

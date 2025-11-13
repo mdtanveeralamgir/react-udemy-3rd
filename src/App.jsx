@@ -1,6 +1,7 @@
 import Accordion from "./components/Accordion/Accordion.jsx";
 import SearchableList from "./components/SearchableList/SearchableList.jsx";
 import {PLACES} from "./Places.js"
+import Place from "./Place.jsx";
 
 function App() {
     return <main>
@@ -32,7 +33,9 @@ function App() {
 
         </section>
         <section>
-            <SearchableList items={PLACES}/>
+            <SearchableList items={PLACES}>
+                {(item) => <Place key={item.id} item={item}/>}
+            </SearchableList>
         </section>
     </main>
 }
