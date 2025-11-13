@@ -33,7 +33,7 @@ function App() {
 
         </section>
         <section>
-            <SearchableList items={PLACES}>
+            <SearchableList items={PLACES} itemKeyFunc={(item) => item.id}>
                 {(item) => <Place key={item.id} item={item}/>}
             </SearchableList>
         </section>

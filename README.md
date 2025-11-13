@@ -11,3 +11,5 @@
     - setting up search input for render props
 547*: Render Props
     - Rendering jsx components using render props
+548*: 
+    - component key as function
