@@ -1,39 +1,6 @@
-=> pages
-=> Link
-=> layout
-=> css/favicon
-=> dymanic route (slug)
-=> Image
-=> use client
-=> usePathName
-
-430*: pages
-    - how routing works using pages
-431*: Link
-    - navigate to pages using Link
-432: layout
-    - how does the page wrapper <html> <body> work
-    - how does the header work
-433: css/favicon
-    - how to add css
-    - how to add favicon
-    - organize folder
-435*: dymanic route
-    - catching the route param in the page using slug
-442: Image
-    - using next.js Image component
-446*: use client
-    - using use client to render page on client side
-447*: usePathname
-    - get current path using usePathname
-450*:
-    - fetching meals using sqlite3 db
-451*:
-    - adding loading page
-    - shows up by default without attaching loading page
-452*:
-    - showing loading using suspense
-453*:
-    - next.js error page to catch all errors
-454*:
-    - next.js default not found page
+510*:
+    - How to use RSC and client component inside one another
+511*:
+    - simplified way to fetch data and render without using react hooks
+512*:
+    - having server side action inside client component
