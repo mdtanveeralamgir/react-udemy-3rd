@@ -1,29 +1,15 @@
-=> css animation using @keyframe
-=> framer motion
-=> AnimatePresence
-=> whileHover
-=> staggered
-=> useAnimate
-=> layout
-=> mode and key in AnimatePresence
+=>Accordion using createContext
+=> render props
 
-520*: @keyframe
-    - css animation using @keyframe
-523*: framer motion
-    - animate expand using framer motion
-524*: initial motion
-    - animate appearance of modal using initial and animate
-525*: AnimatePresence
-    - animate component that is rendered conditionally
-526*: whileHover
-    - scale a button using whileHover
-529*: staggered
-    - show one by one list items with a delay
-531*: useAnimate
-    - impererative animation.
-    - animate targated elements
-532*: layout
-    - animate hiding using layout
-533*: AnimatePresence, mode, key
-    - making element wait to apear before disapearing one
-    - separating element inside parent element using key
+514*: Accordion using createContext
+    - managing state across all accordion items using createContext
+542*: 
+    - Merging accordion items into accordion for more coupling
+543*: 
+    - adding more items to compound component to decouple items
+545: Render props
+    - setting up search input for render props
+547*: Render Props
+    - Rendering jsx components using render props
+548*: 
+    - component key as function
