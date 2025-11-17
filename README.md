@@ -11,3 +11,5 @@ Commands:
     - grouping testing using describe
 573*: useEvent
     - Clicking button using useEvent and testing if component changes
+575*: fetched data
+    - fetching data and testing after
