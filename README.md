@@ -13,3 +13,5 @@ Commands:
     - Clicking button using useEvent and testing if component changes
 575*: fetched data
     - fetching data and testing after
+576*: 
+    - simulating fetch function instead of actually sending request to backend
