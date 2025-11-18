@@ -1,6 +1,6 @@
 //primitive
 let age: number = 20;
-let name: string = "John";
+let _name: string = "John";
 let isInstractor: boolean = false;
 //complex types
 let hobbies: string[] = ["music", "sports"];
@@ -8,3 +8,8 @@ let person: {
     name: string,
     age: number
 }
+
+//Union, multiple declaration to a single variable
+let course: string | number;
+course = "TypeScript";
+course = 1234;
