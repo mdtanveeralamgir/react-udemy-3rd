@@ -13,3 +13,14 @@ let person: {
 let course: string | number;
 course = "TypeScript";
 course = 1234;
+
+//Aliases
+type Car = {
+    make: string,
+    model: string
+}
+
+let myCar: Car = {
+    make: "Ford",
+    model: "Mustang"
+}
