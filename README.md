@@ -1,17 +1,4 @@
-=> describe
-=> useEvent
+=> 
 
 Commands:
-    Run test: npm test
-
-571*:
-    - Create a test
-    - to check if a text is present in the component
-572*: describe
-    - grouping testing using describe
-573*: useEvent
-    - Clicking button using useEvent and testing if component changes
-575*: fetched data
-    - fetching data and testing after
-576*: 
-    - simulating fetch function instead of actually sending request to backend
+    - compile a file: npx tsc <filename>
