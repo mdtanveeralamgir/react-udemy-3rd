@@ -24,3 +24,17 @@ let myCar: Car = {
     make: "Ford",
     model: "Mustang"
 }
+
+//Functions
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+//the return type is derived from the return value
+function subtrack(a: number, b: number) {
+    return a - b;
+}
+//void
+function output(message: string) {
+    console.log(message);
+}
